@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="css/base.css" />
+    <title></title>
+    <style>
+    		/*@media only screen and (min-width: 320px) and (max-width:479px) {
+				body div{font-size:12px;}
+			}
+			@media only screen and (min-width: 480px) and (max-width: 639px) {
+				body div{font-size:13px;}
+			}
+			@media only screen and (min-width: 640px) and (max-width: 768px) {
+				body div{font-size:14px;}
+			} */
+			
+			
+			body{width:100%;overflow-x: hidden;}
+			header{width:100%;height:3.4rem;background:url(img/images/tuniu_03.png) 0.75rem 0.75rem no-repeat #40c373;background-size:1.95rem;} 
+			header select{color:#fff;background-color:#40c373;border:none;margin:1.15rem 0 0 3rem;font-size: 1rem;}
+			header input{width:11.4rem;height:2.25rem;font-size: 0.85rem;line-height:2.25rem;padding-left:2.25rem;color:#bcbcbc;background:url(img/images/tuniu_09.png) 0.75rem 0.55rem no-repeat #fff;background-size:1rem;border-radius: 5%;}
+			header a{color:#fff;font-size: 1rem;background:url(img/images/tuniu_06.png) no-repeat ;background-size:1.35rem;padding-left:2rem;margin-left:1rem;}
+			nav .box{position:relative;}
+			nav ul{width:100%;border-top:0.3rem solid #f8fefc;box-sizing: border-box;display: none;}
+			nav ul li{width:19.1%;display: inline-block;}
+			nav ul li img{width:3rem;margin:0.55rem 0 0.5rem 1.2rem;}
+			nav ul li span{font-size: 0.8rem;color:#2b2b2b;margin-left:1.3rem;}
+			
+			nav .pos{position:absolute;bottom:-1rem;left:50%;margin-left:-1.85rem;}
+			nav .pos span{width:1.1rem;height:0.15rem;background:#ededed;display: inline-block;}
+			nav .pos span.active{background:#1ecd72;}
+			nav .pos>span:nth-child(2){margin:0 0.2rem;}
+			
+			nav .nav-1{margin-top:1.65rem;}
+			nav .nav-1 a{float:left;font-size:0.8rem;width:calc(100%/3 - 3.1rem);height:3rem;border-top:0.1rem solid #eaeaea;border-right:0.1rem solid #eaeaea;line-height:3rem;padding-left:3rem;background: url(img/images/tuniu_42-15.png) 1.7rem 0.9rem no-repeat;background-size: 1rem;}
+			nav .nav-1>a:nth-child(3),nav .nav-1>a:nth-child(6){border-right:0;}
+			
+			nav .adv{width:calc(100% - 1.5rem);margin-left:0.75rem;margin-top:0.5rem;}
+			nav .adv div img{width:100%;}
+			nav .adv h2{width:100%;line-height:2.3rem;padding-left:2.15rem;font-size: 0.9rem;background:url(img/images/1_59.png) 0.4rem 0 no-repeat;background-size:1.2rem;}
+			nav .adv h2 img{width:5.5rem;margin:0.1rem 0 0 2.3rem;}
+			
+			.dh{width:calc(100% - 1.5rem);margin-left:0.75rem;}
+			.dh .ul1{height:3.2rem;}
+			.dh .ul1>li:nth-child(1){background: #3fe498;}
+			.dh .ul1>li:nth-child(2){background: #ffac4e;margin:0 2%;}
+			.dh .ul1>li:nth-child(3){background: #fabf27;}
+			.dh .ul1 li{width:32%;height:3.2rem;color: #fff;float:left;-webkit-box-shadow:-5px -5px  5px #f7f8fa;}
+			.dh .ul1 li a{font-size: 0.95rem;color: #fff;display:inline-block;width:100%;height:1.5rem;line-height:1.6rem;text-align:center;}
+			.dh .ul1 li span{display:inline-block;width:100%;height:1.5rem;font-size: 0.8rem;line-height:1.5rem;text-align:center;}
+			
+			.dh .dx{}
+			.dh .dx span{display: inline-block;width:8rem;height:2.5rem;background:#f7f8fa;margin-top:0.7rem;}
+			.dh .dx a{font-size:1rem;color:#1e201f;line-height: 2.5rem;margin:0 auto;margin-left:1.6rem;}
+			.dh .dx div{width:100%;height:2.5rem;background: #f7f8fa;margin:0.7rem 0;line-height: 2.5rem;text-align: center;}
+			
+			.vip .lef{width:56%;position:relative;background:url(img/images/1_79.png) 0.75rem 2rem no-repeat;background-size:4rem;}
+			.vip .lef .pos{width:3.85rem;height:1.3rem;background: #354a5b;color:#fff;position:absolute;top:0;left:0;font-size:0.55rem;line-height:1.3rem;text-align: center;border-radius: 0 0 30px 0;}
+			.vip .lef p{padding-left:5.4rem;}
+			.vip .lef>p:nth-child(2){font-size:0.9rem;line-height:1.15rem;padding:1.7rem 0 0 5.4rem;}
+			.vip .lef>p:nth-child(3){font-size:0.7rem;line-height:1.rem;color:red;}
+			.vip .lef>p:nth-child(3) span{color:#fff;background:#ff820b;border-radius:5px;}
+			.vip .lef>p:nth-child(4){padding-bottom:1.1rem;}
+			.vip .lef>p:nth-child(4) span{background:#BCBCBC;}
+			
+			.vip .rig{width:44%;}
+			.vip .rig div{width:calc(50% - 1px);border-left:1px solid #ccc;}
+			.vip .rig div h3{width:100%;font-size:0.85rem;color:#0b0b0b;padding-top:0.8rem;text-align: center;}
+			.vip .rig div a{width:100%;height:1.55rem;font-size:0.75rem;color: #a8a8a8;line-height: 1.55rem;text-align: center;}
+			.vip .rig div img{width:4.5rem;margin-left:0.8rem;}
+			
+			.rec{}
+			.rec h2{height:3.35rem;font-size:1.15rem;line-height:3.35rem;padding-left:1.2rem;}
+			.rec li{width:calc(25% - 1px);border-top:1px solid #A8A8A8;border-right:1px solid #A8A8A8;float:left;padding-bottom:0.6rem;}
+			.rec li h3{font-size:0.85rem;color:#0b0b0b;padding-top:0.9rem;text-align: center;}
+			.rec li a{display:block;height:1.55rem;font-size:0.75rem;color: #a8a8a8;line-height: 1.55rem;text-align: center;}
+			.rec li img{width:4.75rem;display: block;margin:0 auto;}
+			
+			.acv{height:3.35rem;border-top:0.45rem solid #A8A8A8;border-bottom:1px solid #A8A8A8;padding:0 0.75rem;}
+			.acv h3{margin-left:0.5rem;font-size:1.1rem;line-height:3.35rem;}
+			.acv p{font-size:0.75rem;color:#ccc;margin-left:1.5rem;line-height:3.35rem;}
+			.acv p span{}
+			.acv a{margin-top:0.6rem;}
+			.acv img{width:5.85rem;}
+			
+			.sq{width:calc(100% - 1.5rem);margin:0 auto;}
+			.sq li{width:calc(25% - 0.75rem);margin:0.9rem 0.375rem;background:#fdf9f6;padding:1rem 0;float:left;}
+			.sq li img{width:4rem;display: block;margin:0 auto;}
+			.sq li a{font-size:0.9rem;display: block;text-align: center;margin-top:0.8rem;}
+			
+			.scenic h3{height:3.85rem;font-size:0.8rem;line-height:3.85rem;text-align: center;background: url(img/images/1_136.png) 10rem 1.3rem no-repeat #f0f0f0;background-size:1.25rem;}
+			
+			.scenic .xxk .one{background: #fff;}
+			.scenic .xxk .one li{font-size:1.1rem;width:25%;height:3.35rem;line-height: 3.35rem;text-align: center;float:left;}
+			.scenic .xxk .one li.active{width:calc(25% - 1px);height:3.1rem;border-bottom:0.35rem solid #21cb72;}
+			.scenic .xxk .two{background: #f8f8f8;}
+			.scenic .xxk .two li{width:calc(25% - 3px);height:2.7rem;font-size:0.8rem;line-height: 2.7rem;text-align: center;border-right:1px solid #dcdcdc;border-bottom:1px solid #dcdcdc;float: left;}
+			.scenic .xxk .two>li:nth-child(4),.scenic .xxk .two>li:nth-child(8){border-right:0;}
+			.scenic .xxk .two .bord{border-bottom:0;}
+			.scenic .xxk .two li a.active{display:block;width:4.65rem;height:1.85rem;line-height:1.85rem;margin:0 auto;background:#21CB72;border-radius:10px;color:#fff;margin-top:0.35rem;}
+			
+			.scenic .ul1{}
+			.scenic .ul1 img{width:100%;}
+			.scenic .ul1 h4{font-size:1.1rem;margin-top:0.9rem;}
+			.scenic .ul1 .aa{display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;color:#969696;font-size:0.8rem;padding-top:0.6rem;}
+			.scenic .ul1 p{padding:0.75rem 0 1rem;}
+			.scenic .ul1 p .span1{color:#bf928c;border:1px solid #bf928c;font-size:0.8rem;border-radius:3px;}
+			.scenic .ul1 p .span2{color:#fff1be;border:1px solid #fff1be;font-size:0.8rem;border-radius:3px;}
+			.scenic .ul1 p a{color:#969696;font-size:0.8rem;border:1px solid #969696;border-radius: 2px;}
+			.scenic .ul1>li:nth-child(2){padding:0 2.5rem 0 1.1rem;}
+			.scenic .ul1>li:nth-child(3){height:0.75rem;background:#f0f0f0;}
+			
+			.scenic .aga img{width:100%;}
+    </style>
+   <script>
+	        ;(function(win, doc){
+	            function change(){
+	      doc.documentElement.style.fontSize=20*doc.documentElement.clientWidth/540+'px';
+	            }
+	            change();
+	
+	            win.addEventListener('resize', change, false);
+	        })(window, document);
+    </script>
+</head>
+<body>
+	
+	<header>
+		<select name="">
+			<option value="北京">北京</option>
+			<option value="上海">上海</option>
+			<option value="三亚">三亚</option>
+		</select>
+		<input type="text" placeholder="true" value="三亚" />
+		<a href="javascript:;">导航</a>
+	</header>
+	<nav>
+		<div class="box">
+			<ul style="display: block;">
+				<li>
+					<img src="img/images/tuniu_15-07.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-05.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-06.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-08.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-09.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-10.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-11.png" alt="" /><br />
+					<span>飞机票</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-12.png" alt="" /><br />
+					<span>火车票</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-13.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<img src="img/images/tuniu_15-07.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-05.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-06.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-08.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-09.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-10.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-11.png" alt="" /><br />
+					<span>飞机票</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-12.png" alt="" /><br />
+					<span>火车票</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-13.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<img src="img/images/tuniu_15-07.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-05.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-06.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-08.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-09.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-10.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-11.png" alt="" /><br />
+					<span>飞机票</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-12.png" alt="" /><br />
+					<span>火车票</span>
+				</li>
+				<li>
+					<img src="img/images/tuniu_15-13.png" alt="" /><br />
+					<span>自驾游</span>
+				</li>
+			</ul>
+			<div class="pos">
+				<span class="active"></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		<div class="nav-1 clearfix">
+			<a href="javascript:;">定制游</a>
+			<a href="javascript:;">定制游</a>
+			<a href="javascript:;">定制游</a>
+			<a href="javascript:;">定制游</a>
+			<a href="javascript:;">定制游</a>
+			<a href="javascript:;">定制游</a>
+		</div>
+		<div class="adv">
+			<div>
+				<img src="img/tuniu_1.jpg"/>
+			</div>
+			<h2>
+				第二人半价 让你从东北浪到海南
+				<img src="img/images/1_62.png" alt="" />
+			</h2>
+
+		</div>
+	
+	</nav>
+	<div class="dh">
+		<ul class="ul1 clearfix">
+			<li>
+				<a href="javascript:;">周边游</a><br />
+				<span>周末好去处</span>
+			</li>
+			<li>
+				<a href="javascript:;">国内游</a><br />
+				<span>祖国大好河山</span>
+			</li>
+			<li>
+				<a href="javascript:;">出境游</a><br />
+				<span>异域风情文化</span>
+			</li>
+		</ul>
+		<div class="dx">
+			<span>
+				<a href="javascript:;">海岛·马岱</a>
+			</span>
+			<span style="margin:0 0rem;">
+				<a href="javascript:;">海岛·马岱</a>
+			</span>
+			<span>
+				<a href="javascript:;">海岛·马岱</a>
+			</span>
+			<span>
+				<a href="javascript:;">海岛·马岱</a>
+			</span>
+			<span  style="margin:0 0rem;">
+				<a href="javascript:;">海岛·马岱</a>
+			</span>
+			<span>
+				<a href="javascript:;">海岛·马岱</a>
+			</span>
+			<div>目的地大全</div>
+		</div>
+	</div>
+	<div style="border-top:0.75rem solid #f0f0f0;border-bottom:0.75rem solid #f0f0f0;">
+		<img src="img/1.jpg" style="width:100%;" />
+	</div>
+	<div class="vip clearfix">
+		<div class="lef fl">
+			<div class="pos">手机专享</div>
+			<p>海口-三亚环岛6日游</p>
+			<p>￥2500起
+				<span>8.3折</span>
+			</p>
+			<p>
+				<span>02</span>：
+				<span>05</span>：
+				<span>06</span>：
+				<span>07</span>
+			</p>
+		</div>
+		<div class="rig fl clearfix">
+			<div class="fl">
+				<h3>当季热玩</h3>
+				<a href="javascript:;">月度出游指南</a>
+				<img src="img/images/1_82.png" alt="" />
+			</div>
+			<div class="fl">
+				<h3>特卖精选</h3>
+				<a href="javascript:;" style="margin-left:1.5rem;">超值抢购</a>
+				<img src="img/images/1_85.png" alt="" />
+			</div>
+		</div>
+	</div>
+	<div class="rec">
+		<h2>热门推荐</h2>
+		<ul class="clearfix">
+			<li>
+				<h3>亲子游</h3>
+				<a href="javascript:;">大小兼顾</a>
+				<img src="img/images/tuniu_90.png" alt="" />
+			</li>
+			<li>
+				<h3>牛人专线</h3>
+				<a href="javascript:;">高品质跟团游</a>
+				<img src="img/images/tuniu_90-30.png" alt="" />
+			</li>
+			<li>
+				<h3>明星推荐</h3>
+				<a href="javascript:;">赏秋特惠啦</a>
+				<img src="img/images/tuniu_90-31.png" alt="" />
+			</li>
+			<li>
+				<h3>全球旅拍</h3>
+				<a href="javascript:;">婚纱摄影</a>
+				<img src="img/images/tuniu_90-32.png" alt="" />
+			</li>
+			<li>
+				<h3>哪里值得玩</h3>
+				<a href="javascript:;">超值低价抢</a>
+				<img src="img/images/tuniu_90-33.png" alt="" />
+			</li>
+			<li>
+				<h3>视频攻略</h3>
+				<a href="javascript:;">精彩旅游</a>
+				<img src="img/images/tuniu_90-34.png" alt="" />
+			</li>
+			<li>
+				<h3>免签/落地签</h3>
+				<a href="javascript:;">省时又省心</a>
+				<img src="img/images/tuniu_90-35.png" alt="" />
+			</li>
+			<li>
+				<h3>蜜月游</h3>
+				<a href="javascript:;">美丽的厮守</a>
+				<img src="img/images/tuniu_90-36.png" alt="" />
+			</li>
+		</ul>
+	</div>
+	<div class="acv clearfix">
+		<h3 class="fl">发现精彩</h3>
+		<p class="fl">
+			<span>“</span>
+			土耳其，旅行要趁...
+			<span>”</span>
+		</p>
+		<a class="fr" href="javascript:;">
+			<img src="img/images/1_117.png" alt="" />
+		</a>
+	</div>
+	<ul class="sq clearfix">
+		<li>
+			<img src="img/images/tuniu_120.png" alt="" />
+			<a href="javascript:;">途牛社区</a>
+		</li>
+		<li>
+			<img src="img/images/tuniu_120-39.png" alt="" />
+			<a href="javascript:;">结伴同游</a>
+		</li>
+		<li>
+			<img src="img/images/tuniu_120-40.png" alt="" />
+			<a href="javascript:;">出游榜</a>
+		</li>
+		<li>
+			<img src="img/images/tuniu_120-41.png" alt="" />
+			<a href="javascript:;">旅行攻略</a>
+		</li>
+	</ul>
+	
+	<div class="scenic">
+		<h3>-----&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp发现更多精彩 &nbsp------</h3>
+		<div class="xxk">
+			<ul class="one clearfix">
+				<li class="active">错峰出游</li>
+				<li>出境游</li>
+				<li>国内游</li>
+				<li>海外游</li>
+			</ul>
+			<ul class="two clearfix">
+				<li><a class="active" href="javascript:;">全部</a></li>
+				<li><a href="javascript:;">心动迪士尼</a></li>
+				<li><a href="javascript:;">美好嘉年华</a></li>
+				<li><a href="javascript:;">秋游正当季</a></li>
+				<li class="bord"><a href="javascript:;">趣玩海岛游</a></li>
+				<li class="bord"><a href="javascript:;">古镇/乐园</a></li>
+				<li class="bord"><a href="javascript:;">欧美品心游</a></li>
+				<li class="bord"><a href="javascript:;">省心游轮季</a></li>
+			</ul>
+		</div>
+		<ul class="ul1">
+			<li>
+				<img src="img/tuniu_2.jpg" alt="" />
+			</li>
+			<li>
+				<h4>长白山万达智选假日酒店4日自行游</h4>
+				<a class="aa" href="javascript:;">醉美长白，开启一段特别的旅程，另有万达度假区免费吃喝拉撒睡哈哈哈</a>
+				<p>
+					<a href="javascript:;">搜索天池水怪</a>
+					<a href="javascript:;">解密青铜们背后...</a>
+					<a href="javascript:;">原始森林</a>
+					<a href="javascript:;">纯洁呼吸</a>
+				</p>
+			</li>
+			<li></li>
+		</ul>
+		<ul class="ul1">
+			<li>
+				<img src="img/tuniu_3.jpg" alt="" />
+			</li>
+			<li>
+				<h4>[圣诞热卖]毛里求斯5晚7日自助游</h4>
+				<a class="aa" href="javascript:;">Trou Aux Biches鹿饮泉酒店（五星），含早晚餐，11号就不住了</a>
+				<p>
+					<span class="span1">立减</span>
+					<a href="javascript:;">中文服务</a>
+					<a href="javascript:;">免费wifi</a>
+					<a href="javascript:;">鲁豫的礼物</a>
+					<a href="javascript:;">陈建斌&蒋晴晴</a>
+				</p>
+			</li>
+			<li></li>
+		</ul>
+		<ul class="ul1">
+			<li>
+				<img src="img/tuniu_4.jpg" alt="" />
+			</li>
+			<li>
+				<h4>爱英13日游</h4>
+				<a class="aa" href="javascript:;">旅行家推荐 一价全含，海航直飞，可配联运温莎古堡，还有好多是不显示的</a>
+				<p>
+					<span class="span2">牛人专线</span>
+					<a href="javascript:;">湖区游船</a>
+					<a href="javascript:;">莫赫悬崖</a>
+					<a href="javascript:;">爱尔兰传统音乐...</a>
+					<a href="javascript:;">SHOW</a>
+				</p>
+			</li>
+			<li></li>
+		</ul>
+		<ul class="ul1">
+			<li>
+				<img src="img/tuniu_5.jpg" alt="" />
+			</li>
+			<li>
+				<h4>[到南深度]北海道6日自助游</h4>
+				<a class="aa" href="javascript:;">北京出发，酒店可选，精选海边温泉酒店</a>
+				<p>
+					<span class="span2">牛人专线</span>
+					<a href="javascript:;">免费WIFI</a>
+					<a href="javascript:;">全日空航空</a>
+					<a href="javascript:;">两地游</a>
+				</p>
+			</li>
+			<li></li>
+		</ul>
+		<div class="aga">
+			<a href=""><img src="img/tuniu_6.jpg" alt="" /></a>
+		</div>
+		<ul class="ul1">
+			<li>
+				<img src="img/tuniu_7.jpg" alt="" />
+			</li>
+			<li>
+				<h4>青岛-崂山-极地海洋世界双高4日游</h4>
+				<a class="aa" href="javascript:;">高端牛专，点评超赞，2晚五星维景，享超大泳池，私家...</a>
+				<p>
+					<span class="span1">立减</span>
+					<span class="span2">牛人专线</span>
+					<a href="javascript:;">海景房</a>
+					<a href="javascript:;">双高往返</a>
+					<a href="javascript:;">途牛独家发团</a>
+					<a href="javascript:;">餐餐美食</a>
+				</p>
+			</li>
+			<li></li>
+		</ul>
+		<ul class="ul1">
+			<li>
+				<img src="img/tuniu_8.jpg" alt="" />
+			</li>
+			<li>
+				<h4>[自助立减]陕西西安双飞4日自助游</h4>
+				<a class="aa" href="javascript:;">双人立减600，高手历史底蕴，尽享西安美食</a>
+				<p>
+					<span class="span1">立减</span>
+					<a href="javascript:;">钟鼓楼</a>
+					<a href="javascript:;">回民街</a>
+					<a href="javascript:;">清华池</a>
+					<a href="javascript:;">兵马俑</a>
+				</p>
+			</li>
+			<li></li>
+		</ul>
+		<ul class="ul1">
+			<li>
+				<img src="img/tuniu_9.jpg" alt="" />
+			</li>
+			<li>
+				<h4>[魅力冲绳]冲绳4日自助游</h4>
+				<a class="aa" href="javascript:;">北京国航直飞，高手东方“夏威夷”休闲度假之旅，海斌城市...</a>
+				<p>
+					<a href="javascript:;">免费wifi</a>
+					<a href="javascript:;">这个夏天</a>
+					<a href="javascript:;">邂逅海岛的浪漫</a>
+				</p>
+			</li>
+			<li></li>
+		</ul>
+		<ul class="ul1">
+			<li>
+				<img src="img/tuniu_10.jpg" alt="" />
+			</li>
+			<li>
+				<h4>长白山-万达滑雪-温泉双卧5日游</h4>
+				<a class="aa" href="javascript:;">0购物0自费，花样玩雪季，宿1晚万达2晚度假酒店，花...</a>
+				<p>
+					<span class="span2">牛人专线</span>
+					<a href="javascript:;">牛人火车线</a>
+					<a href="javascript:;">长白山天池</a>
+					<a href="javascript:;">全程豪华住宿</a>
+					<a href="javascript:;">万达激情滑雪</a>
+				</p>
+			</li>
+			<li></li>
+		</ul>
+		<ul class="ul1">
+			<li>
+				<img src="img/tuniu_11.jpg" alt="" />
+			</li>
+			<li>
+				<h4>大连金伯家酒店5日自助游</h4>
+				<a class="aa" href="javascript:;">地处CBD的中心地段港湾广场，子凌大连海港，经济舒适</a>
+				<p>
+					<a href="javascript:;">海滨城市</a>
+					<a href="javascript:;">东北明珠</a>
+					<a href="javascript:;">浪漫海滩</a>
+				</p>
+			</li>
+			<li></li>
+		</ul>
+		<ul class="ul1">
+			<li>
+				<img src="img/tuniu_12.jpg" alt="" />
+			</li>
+			<li>
+				<h4>曲阜-泰山-济南双高3日游</h4>
+				<a class="aa" href="javascript:;">双人立减400，牛人专线，0购物，赠五星自助餐或温泉...</a>
+				<p>
+					<span class="span1">立减</span>
+					<span class="span2">牛人专线</span>
+					<a href="javascript:;">海景房</a>
+					<a href="javascript:;">途牛专线</a>
+					<a href="javascript:;">精选金牌导游</a>
+					<a href="javascript:;">品特色餐</a>
+					<a href="javsscript:;">0购物</a>
+				</p>
+			</li>
+			<li></li>
+		</ul>
+		<ul class="ul1">
+			<li>
+				<img src="img/tuniu_13.jpg" alt="" />
+			</li>
+			<li>
+				<h4>[魅力冲绳]冲绳4日自助游</h4>
+				<a class="aa" href="javascript:;">北京国航直飞，高手东方“夏威夷”休闲度假之旅，海斌城市...</a>
+				<p>
+					<a href="javascript:;">免费wifi</a>
+					<a href="javascript:;">这个夏天</a>
+					<a href="javascript:;">邂逅海岛的浪漫</a>
+				</p>
+			</li>
+			<li></li>
+		</ul>
+		<ul class="ul1">
+			<li>
+				<img src="img/tuniu_14.jpg" alt="" />
+			</li>
+			<li>
+				<h4>大连金伯家酒店5日自助游</h4>
+				<a class="aa" href="javascript:;">地处CBD的中心地段港湾广场，子凌大连海港，经济舒适</a>
+				<p>
+					<a href="javascript:;">海滨城市</a>
+					<a href="javascript:;">东北明珠</a>
+					<a href="javascript:;">浪漫海滩</a>
+				</p>
+			</li>
+			<li></li>
+		</ul>
+	
+	</div>
+
+</body>
+</html>
