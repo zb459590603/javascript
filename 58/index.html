@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="css/base.css" />
+    <title></title>
+ 	<script>
+	        ;(function(win, doc){
+	            function change(){
+	      doc.documentElement.style.fontSize=20*doc.documentElement.clientWidth/540+'px';
+	            }
+	            change();
+	
+	            win.addEventListener('resize', change, false);
+	        })(window, document);
+    </script>
+	<style>
+		
+		
+		.ul1{width:100%;margin-top:1.45rem;border-bottom:0.75rem solid #f4f4f4;}
+		.ul1 li{width:25%;float:left;margin-bottom:1.1rem;}
+		.ul1 li span{display:block;width:3rem;height:3rem;margin:0 auto;}
+		.ul1>li:nth-child(1) span{background:url(images/001_11.png) no-repeat;background-size:100%;}
+		.ul1>li:nth-child(2) span{background:url(images/001_13.png) no-repeat;background-size:100%;}
+		.ul1>li:nth-child(3) span{background:url(images/001_15.png) no-repeat;background-size:100%;}
+		.ul1>li:nth-child(4) span{background:url(images/001_17.png) no-repeat;background-size:100%;}
+		.ul1>li:nth-child(5) span{background:url(images/001_23.png) no-repeat;background-size:100%;}
+		.ul1>li:nth-child(6) span{background:url(images/001_24.png) no-repeat;background-size:100%;}
+		.ul1>li:nth-child(7) span{background:url(images/001_25.png) no-repeat;background-size:100%;}
+		.ul1>li:nth-child(8) span{background:url(images/001_26.png) no-repeat;background-size:100%;}
+		.ul1 li a{display:block;width:100%;font-size:0.8rem;line-height:2.2rem;color:#a8a8a8;text-align: center;}
+		
+		.dl1{width:100%;border-bottom:0.75rem solid #f4f4f4;}
+		.dl5{border-bottom:0.1rem solid #f4f4f4;}
+		.dl1 dt{width:calc(100% - 3.4rem);float:left;font-size:1.1rem;font-weight:bold;height:2.9rem;line-height:2.9rem;padding-left:3.4rem;background:url(images/001_32.png) 0.8rem 0.8rem no-repeat;background-size:1.3rem;}
+	    .dl1 .dt2{background:url(images/001_36.png) 0.8rem 0.8rem no-repeat;background-size:1.3rem;}
+	    .dl1 .dt3{background:url(images/001_40.png) 0.8rem 0.8rem no-repeat;background-size:1.3rem;}
+	    .dl1 .dt4{background:url(images/001_46.png) 0.8rem 0.8rem no-repeat;background-size:1.3rem;}
+	    .dl1 .dt5{background:url(images/001_50.png) 0.8rem 0.8rem no-repeat;background-size:1.3rem;}
+	    .dl1 .img1{width:100%;height:5.875rem;background:url(img/1.jpg) no-repeat;background-size:100% ;}
+		.dl1 dd{width:calc(100%/3);float:left;font-size:1rem;height:3.75rem;line-height:3.75rem;text-align: center;border-top:1px solid #e8e8e8;}
+		.dl1 dd.red{color:#ad2924;}
+		.dl1 dd.pink{color:#ff9597;}
+		.dl1 dd.green{color:#66c698;}
+		.dl1 dd.active{width:calc(100%/3 - 2px);border-left:1px solid #e8e8e8;border-right:1px solid #e8e8e8;}
+		.dl1 dd.none{color:#47aad1;border-left:1px solid #fff;border-right:1px solid #fff;}
+		
+		footer{width:100%;height:3.55rem;}
+		footer a{display:inline-block;width:1.55rem;height:1.675rem;font-size:1.6rem;margin-top:1rem;margin-left:3.2rem;}
+		footer a img{width:100%;}
+		
+		header{width: 100%;height:3.15rem;background: url(images/001_03.png) 1.1rem 0.5rem no-repeat #f4f4f4;background-size:2.25rem;}
+		header select{border:none;background:#f4f4f4;font-size:1rem;margin:1.1rem 0 0 4.1rem;}
+		header input{font-size: 1rem;width:16.1rem;height:2.1rem;line-height: 2.1rem;padding-left:2rem;color:#A8A8A8;border:0.1rem solid #A8A8A8;border-radius: 10px;background: url(images/001_06.png) 0.6rem 0.7rem no-repeat #fff;background-size:1rem;}
+	</style>
+</head>
+<body>
+<div class="box">
+	<header>
+		<select>
+			<option value="beijing">北京</option>
+			<option value="shanghia">上海</option>
+			<option value="hebei">河北</option>
+		</select>
+		<input type="text" value="找工作 找房子 找搬家" />
+	</header>
+	
+	<ul class="ul1 clearfix">
+		<li>
+			<span></span>
+			<a href="javascript:;">全职招聘</a>
+		</li>
+		<li>
+			<span></span>
+			<a href="javascript:;">兼职招聘</a>
+		</li>
+		<li>
+			<span></span>
+			<a href="javascript:;">租房</a>
+		</li>
+		<li>
+			<span></span>
+			<a href="javascript:;">买房</a>
+		</li>
+		<li>
+			<span></span>
+			<a href="javascript:;">二手车</a>
+		</li>
+		<li>
+			<span></span>
+			<a href="javascript:;">二手物品</a>
+		</li>
+		<li>
+			<span></span>
+			<a href="javascript:;">家政保洁</a>
+		</li>
+		<li>
+			<span></span>
+			<a href="javascript:;">本地服务</a>
+		</li>
+	</ul>
+	<dl class="dl1 clearfix">
+		
+		<dt>招聘</dt>
+		
+		<dd class="red">销售</dd>
+		<dd class="active">技工普工</dd>
+		<dd>餐饮服务</dd>
+		
+		<dd>司机</dd>
+		<dd class="active red">人事行政</dd>
+		<dd>仓储物流</dd>
+		
+		<dd class="red">促销导购</dd>
+		<dd class="active">客服</dd>
+		<dd>超市百货</dd>
+		
+		<dd>家政保洁</dd>
+		<dd class="active">服务员</dd>
+		<dd>房产中介</dd>
+		
+		<dd>IT/互联网</dd>
+		<dd class="active">教育培训</dd>
+		<dd>美术/设计/创意</dd>
+		
+		<dd class="pink">包吃住</dd>
+		<dd class="active none">周末双休</dd>
+		<dd class="green">五险一金</dd>
+	</dl>	
+	<dl class="clearfix dl1">
+		<dt class="dt2">房产</dt>
+		<dd>二手房</dd>
+		<dd class="active">学区房</dd>
+		<dd>精装房</dd>
+		<dd>租房</dd>
+		<dd class="active">写字楼</dd>
+		<dd>低总价</dd>
+		<dd class="pink">房东直租</dd>
+		<dd class="active none">认证房源</dd>
+		<dd class="green">拎包入驻</dd>
+	</dl>	
+	<dl class="clearfix dl1">
+		<dt class="dt3">二手车</dt>
+		<dd>3-5万</dd>
+		<dd class="active">5-8万</dd>
+		<dd>8-12万</dd>		
+		<dd>大众</dd>
+		<dd class="active">丰田</dd>
+		<dd>奥迪</dd>		
+		<dd>suv</dd>
+		<dd class="active">轿车</dd>
+		<dd>火车</dd>	
+		<dd class="pink">准新车</dd>
+		<dd class="active none">低价suv</dd>
+		<dd class="green">租车</dd>
+		<dd class="img1"></dd>
+	</dl>	
+	<dl class='clearfix dl1'>
+		<dt class="dt4">宠物</dt>
+		<dd>猫猫</dd>
+		<dd class="active">狗狗</dd>
+		<dd>花苗鱼虫</dd>	
+		<dd class="pink">泰迪</dd>
+		<dd class="active none">金毛</dd>
+		<dd class="green">哈士奇</dd>
+	</dl>	
+	<dl class="clearfix dl1 dl5">
+		<dt class="dt5">家政</dt>
+		<dd>搬家</dd>
+		<dd class="active">工商注册</dd>
+		<dd>小时工</dd>		
+		<dd>投资担保</dd>
+		<dd class="active">家庭装修</dd>
+		<dd>保姆月嫂</dd>		
+		<dd>家电维修</dd>
+		<dd class="active">房屋维修</dd>
+		<dd>保洁清洗</dd>	
+		<dd class="pink">租车</dd>
+		<dd class="active none">管道疏通</dd>
+		<dd class="green">餐饮加盟</dd>
+	</dl>	
+	
+	<footer>
+		<a href="javascript:;"> < </a>
+		<a href="javascript:;"> > </a>
+		<a href="javascript:;">
+			<img src="images/001_53.png"/>
+		</a>
+		<a href="javascript:;">
+			<img src="images/001_55.png"/>
+		</a>
+		<a href="javascript:;">
+			<img src="images/001_57.png"/>
+		</a>
+	</footer>		
+</div>
+</body>
+</html>
