@@ -12,8 +12,9 @@
 	<div id="box"></div>
 </body>
 <script>
-	$(document).bind('touchstart',function(){
-		alert(document.documentElement.clientWidth);
-	});
+	var oBox = document.getElementById('box');
+	oBox.addEventListener('touchmove',function(){
+		alert(1);
+	})
 </script>
 </html>
