@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<title>京东手机页面模拟</title>
+<link rel="stylesheet" href="css/base.css" />
+
+<!--<base target="_blank" href="URL地址" />-->
+<!--1、Target 值：_blank 新窗口打开URL链接_parent 在本网页刷新全新打开对应URL地址-->
+<script type="text/javascript">  	
+	;(function(win,doc){
+		function change(){
+			doc.documentElement.style.fontSize=24*doc.documentElement.clientWidth/720+'px';
+		}
+		change();
+		win.addEventListener('resize',change,false);
+	})(window,document);
+</script>
+<style>
+	@media only screen and (max-width: 360px){ /*如果小于360px 就不再按比例缩小 */
+		html{font-size:12px;}
+		body{width:30rem;}	
+	} 
+/* 公用样式 */
+	.show50{width:50%;height:8.75rem;box-sizing: border-box;padding:1.25rem 0.625rem 1.25rem 1.125rem;float:left;border-right:0.07rem solid #CBCBCB;border-bottom:0.07rem solid #CBCBCB;}
+	.border-b{border-bottom:none;}
+	.border-r{border-right:0;}
+	.show50 .le{float:left;}
+	.show50 .le h3{font-size:1.3rem;}
+	.show50 .le p{color:#ccc;}
+	.show50 .le span{font-size:1.25rem;color:#FFFFFF;background#ff4a7d;display: block;padding:0.5rem;}
+	.show50 .ri{float:right;}
+	.show50 .ri img{width:6.5rem;height:7.166rem;}
+	
+	.show25{width:25%;height:8.75rem;box-sizing: border-box;padding:0.75rem 0.625rem 1.25rem 1.125rem;float:left;border-right:0.07rem solid #CBCBCB;position:relative;}
+	.border-bottom{border-bottom:0.07rem solid #CBCBCB;}
+	.show25 h3{font-size:1.3rem;}
+	.show25 p{color:#ccc;}
+	.show25 span{font-size:1.25rem;color:#FFFFFF;background#ff4a7d;display: block;position:absolute;left:0;bottom:0;}
+	.show25 img{width:5.25rem;height:4.166rem;}	
+	
+	.show10{height:10.2rem;}
+/* 公用样式 结束*/	
+	
+	body{padding-bottom:4.5rem;}
+	/* 头部 */
+	header{width:30rem;height:13.416rem;position: relative;}
+	header .seach{width:calc(100% - 1.666rem);height:3.25rem;position:absolute;top:0.5rem;left:0.875rem;border:none;}
+	header .seach p{width:25.333rem;height:2.25rem;background:#8fb7cf;border-radius:0.7rem;position:relative;}
+	header .seach a{position:absolute;top:0.5rem;right:0rem;color:#fff;}
+	header .seach p span,header .seach p i,header .seach p b{position:absolute;top:0.4rem;}
+	header .seach p span{font-size:1.2rem;left:0.7rem;}
+	header .seach p i{left:3rem;}
+	header .seach p b{right:0.833rem;width:1.083rem;height:1.083rem;background:url(img/1.png) no-repeat;background-size:cover ;}
+	header .banner{width:100%;height:100%;}
+	header .banner ul li{display: none;}
+	header .banner ul li.active{display: block;}
+	header .banner a{display: block;}
+	header .banner img{width:100%;height:100%;}
+	header .banner ol{width:11rem;height:0.6rem;position:absolute;bottom:0.666rem;left:10.333rem;}
+	header .banner ol li{width:0.5rem;height:0.5rem;border:0.083rem solid #FFFFFF;border-radius: 50%;margin:0 0.333rem;float:left;}
+	header .banner ol li.active{background: #FFFFFF;}
+	/* 导航 */
+	nav{width:30rem;height:15.084rem;background:#f3f3f3;}
+	nav ul{width:30rem;10rem;padding-top:1.5rem;}
+	nav li{width:20%;height:5rem;float:left;text-align: center;}
+	nav li a{display: block;color:#000000;font-size:1rem;}
+	nav li img{width:2.416rem;height:2.416rem;margin-bottom:0.3rem;}
+	nav li span{}	
+	nav .news{width:95%;margin:0 auto;height:2.5rem;background:#FFFFFF;border-radius: 0.5rem;line-height:2.5rem;}
+	nav .news strong{color:#333333;font-weight:bold;padding-left:1.083rem;}
+	nav .news span{width:3.333rem;height:1.75rem;background:#f02b2b;color:#fff;line-height:1.75rem;text-align: center;font-weight: bold;margin:0.3rem 0.6rem 0  0.4rem;}
+	nav .news p{color:#747474;}
+	nav .news p b{color:#f23131;}
+	nav .news i{width:3.333rem;height:1.75rem;height:1.55rem;color:#181818;border-left:0.083rem solid #ececec;margin-top:0.3rem;line-height:1.55rem;text-align: center;}
+	/* 内容区 */
+	.content{}
+		/* 秒杀区 */
+	.content .seckill{overflow: hidden;}
+	.content .seckill .hed{width:95%;margin:0 auto;height:3.4rem;line-height: 3.4rem;}
+	.content .seckill .hed h3{font-size: 1rem;color:#f02b2b;margin-right:1.125rem;}
+	.content .seckill .hed span{margin-right:0.5rem;}
+	.content .seckill .hed p{}
+	.content .seckill .hed p i{float: left;width:1.916rem;height:1.75rem;line-height: 1.75rem;text-align: center;border:0.05rem solid #dfdfdf;margin-top:0.8rem;}
+	.content .seckill .hed p b{float: left;}
+	.content .seckill .hed a{color:#f23737;}
+	.content .seckill .hed a img{width:1.333rem;height:1.333rem;margin-top:1rem;}
+		/* 秒杀区下边的组图 */
+	.content .seckill .picture{width:95rem;height:7.166rem;overflow: hidden;}
+	.content .seckill .picture li{width:9rem;height:7.166rem;box-sizing: border-box;float:left;border-right:0.05rem solid #f6f6f6;padding:0 0.833rem;}
+	.content .seckill .picture li img{width:7.291rem;height:7.166rem;}
+	.content .seckill .picture .last-li{width:2.5rem;height:6rem;background:#ccc;margin-top:0.7rem;}
+	.content .seckill ol{width:100%;height:8.75rem;margin:1rem 0;border-top:0.07rem solid #CBCBCB;}
+	/* 爱生活 */
+	.content .life dt{background:url(img/floor-tit.png) no-repeat;background-size:cover;}
+	.content .life dt img{width:5.541rem;height:2.333rem;margin-left:12rem;}
+	.content .life .pos{box-sizing:border-box;width:100%;border-left:0.66rem solid #f3f3f3;border-top:0.66rem solid #f3f3f3;border-right:0.66rem solid #f3f3f3;position:relative;}
+	.content .life .pos img{width:100%;height:100%;display: none;}
+	.content .life .pos img.active{display: block;}
+	.content .life .pos ul{width:6rem;height:1rem;position:absolute;left:13.5rem;bottom:0.8rem;}
+	.content .life .pos li{width:0.5rem;height:0.5rem;border:0.1rem solid #fff;border-radius: 50%;float:left;margin-right:1.1rem;}
+	.content .life .pos li.active{background:blue;}
+	/* 发现好店 */
+	.content .look dt{width:100%;height:2.333rem;background:url(img/floor-tit.png) no-repeat;background-size:cover;position:relative;}
+	
+	.content .look dt .imga{width:6.941rem;height:2.333rem;position:absolute;top:0;left:12rem;}
+	/**/
+	.content .look dt span{width:6rem;height:1rem;position:absolute;right:0;top:0.6rem;}
+	.content .look dt span img{width:1.333rem;height:1.333rem;float:right;}
+	.content .look dd{width:50%;height:10rem;box-sizing: border-box;;float:left;border-right:0.07rem solid #CBCBCB;position:relative;}
+	.content .look dd h3{font-size:1.3rem;margin-left:0.7rem;margin-top:1rem;}
+	.content .look dd h4{font-size:1rem;font-weight:normal;margin-left:0.7rem;padding-right:1rem;margin-top:1rem;}
+	.content .loog dd p{width:80%;height:1rem;color:#ccc;margin:0.7rem;}
+	.content .look dd img{width:50%;height:6rem;float:left;}
+	.content .look dd .opa{width:94%;height:1.3rem;background:rgba(0,0,0,0.3);position:absolute;left:3%;bottom: 3%;line-height: 1.3rem;text-align: center;color:#fff;}
+	
+	/* 新用户特权 */
+	.new1{width:100%;height:18.75rem;background:url(img/96.jpg) no-repeat center center;background-size:cover;}
+	.new1 div{width:95%;height:10.875rem;padding:4rem 0 0 0 ;margin:0 auto;}
+	/* footer */
+	.footer{width:100%;height:4rem;background: #CCCCCC;text-align: center;}
+	.footer a{float:left;color:#252525;margin-top:1.5rem;}
+	.footer a:nth-child(1),.footer a:nth-child(4){width:25%;}
+	.footer a:nth-child(2),.footer a:nth-child(3){width:20%;}
+	.footer a:nth-child(2){border-right:0.06rem solid #000000;border-left:0.06rem solid #000000;}
+	.footer a:nth-child(3){border-right:0.06rem solid #000000;}
+	/* footer-nav */	
+	footer{width:100%;height:4.5rem;position:fixed;left:0;bottom:0;background:#fff;}
+	footer ul{}
+	footer ul li{float:left;width:20%;}
+	footer ul li img{display:block;width:54px;height:54px;}
+	#load{width:100%;height:3rem;background:#c0c0c0;line-height:3rem;text-align: center;font-size:1.2rem;}
+</style>
+</head>
+<body>
+	<!--<input type="search" placeholder="测试搜索" autosave="aoa.org.cn" result="8"><br />-->
+	<!--<time itemprop="date">2017-04-09</time><br />-->
+	<!--<mark>这是mark标签</mark><br />-->
+	<!--<video src="1.webm" controls="controls">您的浏览器不支持 video 标签。</video><br />-->
+	<!--<audio src="a.mp4" autoplay="autoplay">您的浏览器不支持 audio 标签。</audio>-->
+	<!--window.location.href='https://www.baidu.com/';点击跳转到哪里  -->
+<div id="box">	
+	<!-- header -->
+	<header>
+		<div class="seach">
+			<p>  <!-- 点击打开一个新窗口，搜索窗口 -->
+				<span>JD</span>
+				<i>搜索京东商品/商铺</i>
+				<b></b>
+			</p>
+			<a>登录</a>
+		</div>
+		<div class="banner">
+			<ul>	
+				<li class="active"><!-- 需要获取数据 -->
+					<a href="">
+						<img src="img/1.jpg" alt="" />
+					</a>
+				</li>
+			</ul>
+			<ol class="clearfix">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ol>
+		</div>
+	</header>
+	
+	<!-- nav -->
+	<nav>
+		<ul class="clearfix">
+			<li>
+				<a href="javascript:;">
+					<img src="img/jd-1.png" alt=""/><br />
+					<span>京东超市</span>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="img/jd-2.png" alt=""/><br />
+					<span>全球购</span>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="img/jd-3.png" alt=""/><br />
+					<span>服装城</span>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="img/jd-4.png" alt=""/><br />
+					<span>京东生鲜</span>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="img/jd-5.png" alt=""/><br />
+					<span>京东到家</span>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="img/jd-6.png" alt=""/><br />
+					<span>充值中心</span>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="img/jd-7.png" alt=""/><br />
+					<span>惠赚钱</span>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="img/jd-8.png" alt=""/><br />
+					<span>领券</span>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="img/jd-9.png" alt=""/><br />
+					<span>物流查询</span>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="img/jd-10.png" alt=""/><br />
+					<span>领京豆</span>
+				</a>
+			</li>
+		</ul>
+		<div class="news clearfix">
+			<strong class="fl">京东</strong>
+			<span class="fl">快报</span>
+			<p class="fl">       <!-- 需要获取数据 -->
+				:
+				<b>HOT</b>
+				京东家装节，跨万店买4免1！
+			</p>
+			<i class="fr">更多</i>
+		</div>
+	</nav>
+	
+	<!-- content -->
+	<div class="content">
+		<!-- 秒杀区 -->
+		<div class="seckill">
+			<div class="hed clearfix">
+				<h3 class="fl">京东秒杀</h3>
+				<span class="fl">10点场</span>
+				<p class="fl clearfix">  <!--时间需要从后台获取一个倒计时时间-->
+					<i>00</i>
+					<b>：</b>
+					<i>00</i>
+					<b>：</b>
+					<i>00</i>
+				</p>
+				<a class="fr clearfix">
+					有种爱叫点击购买
+					<img src="img/right.png" alt="" class="fr" />
+				</a>
+			</div>		
+			<!-- 秒杀下边的一组图 -->
+			<ul class="picture clearfix">
+				<li>
+					<img src="img/p-1.jpg" alt="" />
+				</li>
+				<li>
+					<img src="img/p-2.jpg" alt="" />
+				</li>
+				<li>
+					<img src="img/p-3.jpg" alt="" />
+				</li>
+				<li>
+					<img src="img/p-4.jpg" alt="" />
+				</li>
+				<li>
+					<img src="img/p-5.jpg" alt="" />
+				</li>
+				<li>
+					<img src="img/p-7.jpg" alt="" />
+				</li>
+				<li>
+					<img src="img/p-8.jpg" alt="" />
+				</li>
+				<li>
+					<img src="img/p-10.jpg" alt="" />
+				</li>
+				<li>
+					<img src="img/p-11.jpg" alt="" />
+				</li>
+				<li>
+					<img src="img/p-12.jpg" alt="" />
+				</li>
+				<li class="last-li">
+					查看全部
+				</li>
+			</ul>
+			<ol class="clearfix">
+				<li class="show50 clearfix border-b">
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+					</div>
+					<div class="ri">
+						<img src="img/41.jpg" alt="" />
+					</div>
+				</li>
+				<li class="show50 clearfix border-b border-r">				
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+					</div>
+					<div class="ri">
+						<img src="img/42.jpg" alt="" />
+					</div>				
+				</li>
+			</ol>
+		</div>
+		<!-- 爱生活 -->
+		<div class="life">
+			<dl>
+				<dt>
+					<img src="img/71.jpg" alt="" />
+				</dt>
+				<dd class="show50 clearfix">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+					</div>
+					<div class="ri">
+						<img src="img/42.jpg" alt="" />
+					</div>	
+				</dd>
+				<dd class="show50 clearfix border-r">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+					</div>
+					<div class="ri">
+						<img src="img/42.jpg" alt="" />
+					</div>	
+				</dd>
+				<dd class="show50 clearfix">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+					</div>
+					<div class="ri">
+						<img src="img/42.jpg" alt="" />
+					</div>	
+				</dd>
+				<dd class="show50 clearfix border-r">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+					</div>
+					<div class="ri">
+						<img src="img/42.jpg" alt="" />
+					</div>	
+				</dd>
+			</dl>
+			<ul class="clearfix">
+				<li>												
+					<div class="show25 show10">
+						<h3>巧克力</h3>
+						<p>好货大赏</p>
+						<img src="img/51.jpg" alt="" />
+					</div>
+				</li>
+				<li>												
+					<div class="show25 show10">
+						<h3>双肩包</h3>
+						<p>好货大赏</p>
+						<img src="img/52.jpg" alt="" />
+					</div>
+				</li>
+				<li>												
+					<div class="show25 show10">
+						<h3>电子表</h3>
+						<p>好货大赏</p>
+						<img src="img/53.jpg" alt="" />
+					</div>
+				</li>
+				<li>												
+					<div class="show25 border-r show10">
+						<h3>清洁卫生</h3>
+						<p>好货大赏</p>
+						<img src="img/54.jpg" alt="" />
+					</div>
+				</li>
+			</ul>
+			<div class="pos">
+				<div>
+					<img src="img/61.jpg" alt="" class="active" />
+					<img src="img/62.jpg" alt="" />
+				</div>
+				<ul class="clearfix">
+					<li class="active"></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+		<!-- 享品质 -->
+		<div class="life">
+			<dl>
+				<dt>
+					<img src="img/72.jpg" alt="" />
+				</dt>
+				<dd class="show50 clearfix">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+					</div>
+					<div class="ri">
+						<img src="img/42.jpg" alt="" />
+					</div>	
+				</dd>
+				<dd class="show50 clearfix border-r">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+					</div>
+					<div class="ri">
+						<img src="img/42.jpg" alt="" />
+					</div>	
+				</dd>
+				<dd class="show50 clearfix">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+					</div>
+					<div class="ri">
+						<img src="img/42.jpg" alt="" />
+					</div>	
+				</dd>
+				<dd class="show50 clearfix border-r">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+					</div>
+					<div class="ri">
+						<img src="img/42.jpg" alt="" />
+					</div>	
+				</dd>
+			</dl>
+			<ul class="clearfix">
+				<li>												
+					<div class="show25 show10">
+						<h3>巧克力</h3>
+						<p>好货大赏</p>
+						<img src="img/51.jpg" alt="" />
+					</div>
+				</li>
+				<li>												
+					<div class="show25 show10">
+						<h3>双肩包</h3>
+						<p>好货大赏</p>
+						<img src="img/52.jpg" alt="" />
+					</div>
+				</li>
+				<li>												
+					<div class="show25 show10">
+						<h3>电子表</h3>
+						<p>好货大赏</p>
+						<img src="img/53.jpg" alt="" />
+					</div>
+				</li>
+				<li>												
+					<div class="show25 border-r show10">
+						<h3>清洁卫生</h3>
+						<p>好货大赏</p>
+						<img src="img/54.jpg" alt="" />
+					</div>
+				</li>
+			</ul>
+			<div class="pos">
+				<div>
+					<img src="img/63.jpg" alt="" class="active" />
+					<img src="img/62.jpg" alt="" />
+				</div>
+				<ul class="clearfix">
+					<li class="active"></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+		<!-- 购特色 -->
+		<div class="life">
+			<dl>
+				<dt>
+					<img src="img/73.jpg" alt="" />
+				</dt>
+				<dd class="show50 clearfix">								
+					<div class="le">
+						<h3>aaaa</h3>
+						<p>好货大赏</p>
+					</div>
+					<div class="ri">
+						<img src="img/42.jpg" alt="" />
+					</div>	
+				</dd>
+				<dd class="show25 border-bottom">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+						<img src="img/42.jpg" alt="" />
+					</div>
+				</dd>
+				<dd class="show25 border-bottom">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+						<img src="img/42.jpg" alt="" />
+					</div>
+				</dd>
+				<dd class="show50 clearfix">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+					</div>
+					<div class="ri">
+						<img src="img/42.jpg" alt="" />
+					</div>	
+				</dd>
+				<dd class="show25 border-bottom">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+						<img src="img/42.jpg" alt="" />
+					</div>
+				</dd>
+				<dd class="show25 border-bottom">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+						<img src="img/42.jpg" alt="" />
+					</div>
+				</dd>
+				<dd class="show25">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+						<img src="img/42.jpg" alt="" />
+					</div>
+				</dd>
+				<dd class="show25">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+						<img src="img/42.jpg" alt="" />
+					</div>
+				</dd>
+				<dd class="show25">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+						<img src="img/42.jpg" alt="" />
+					</div>
+				</dd>
+				<dd class="show25">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+						<img src="img/42.jpg" alt="" />
+					</div>
+				</dd>
+			</dl>
+			<div class="pos">
+				<div>
+					<img src="img/62.jpg" alt="" class="active" />
+					<img src="img/61.jpg" alt="" />
+				</div>
+				<ul class="clearfix">
+					<li class="active"></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+		<!-- 逛商场 -->
+		<div class="life">
+			<dl>
+				<dt>
+					<img src="img/74.jpg" alt="" />
+				</dt>
+				<dd class="show50 clearfix">								
+					<div class="le">
+						<h3>aaaa</h3>
+						<p>好货大赏</p>
+					</div>
+					<div class="ri">
+						<img src="img/42.jpg" alt="" />
+					</div>	
+				</dd>
+				<dd class="show50 clearfix">								
+					<div class="le">
+						<h3>aaaa</h3>
+						<p>好货大赏</p>
+					</div>
+					<div class="ri">
+						<img src="img/42.jpg" alt="" />
+					</div>	
+				</dd>
+				<dd class="show50 clearfix">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+					</div>
+					<div class="ri">
+						<img src="img/42.jpg" alt="" />
+					</div>	
+				</dd>
+				<dd class="show50 clearfix">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+					</div>
+					<div class="ri">
+						<img src="img/42.jpg" alt="" />
+					</div>	
+				</dd>
+				<dd class="show25 border-bottom ">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+						<img src="img/42.jpg" alt="" />
+					</div>
+				</dd>
+				<dd class="show25 border-bottom">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+						<img src="img/42.jpg" alt="" />
+					</div>
+				</dd>
+				<dd class="show25 border-bottom">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+						<img src="img/42.jpg" alt="" />
+					</div>
+				</dd>
+				<dd class="show25 border-bottom">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+						<img src="img/42.jpg" alt="" />
+					</div>
+				</dd>
+				<dd class="show25">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+						<img src="img/42.jpg" alt="" />
+					</div>
+				</dd>
+				<dd class="show25">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+						<img src="img/42.jpg" alt="" />
+					</div>
+				</dd>
+				<dd class="show25">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+						<img src="img/42.jpg" alt="" />
+					</div>
+				</dd>
+				<dd class="show25">								
+					<div class="le">
+						<h3>排行榜</h3>
+						<p>好货大赏</p>
+						<img src="img/42.jpg" alt="" />
+					</div>
+				</dd>
+			</dl>
+			<div class="pos">
+				<div>
+					<img src="img/63.jpg" alt="" style="display: block;" />
+				</div>
+			</div>
+		</div>
+		<!-- 发现好店 -->
+		<div class="look">
+			<dl class="clearfix">
+				<dt>
+					<img src="img/75.jpg" alt=""  class="imga"/>
+					<span class="clearfix">
+						更多精彩
+						<img src="img/right.png"/>
+					</span>
+				</dt>
+				<dd>	
+					<h3>精选</h3>
+					<p style="color:#ccc;margin-left:0.7rem;">20家好店为你精心推荐</p>
+					<div class="bot clearfix">
+						<img src="img/101.jpg" alt="" />
+						<img src="img/102.jpg" alt="" />
+					</div>	
+					<div class="opa">
+						京东自营神火鼎盛旗舰店
+					</div>
+				</dd>
+				<dd>	
+					<h3>精选</h3>
+					<p style="color:#ccc;margin-left:0.7rem;">20家好店为你精心推荐</p>
+					<div class="bot clearfix">
+						<img src="img/101.jpg" alt="" />
+						<img src="img/102.jpg" alt="" />
+					</div>	
+					<div class="opa">
+						京东自营神火鼎盛旗舰店
+					</div>
+				</dd>
+			</dl>	
+		</div>
+		<!-- 优选清单 -->
+		<div class="look">
+			<dl class="clearfix">
+				<dt>
+					<img src="img/76.jpg" alt=""  class="imga"/>
+					<span class="clearfix">
+						更多精彩
+						<img src="img/right.png"/>
+					</span>
+				</dt>
+				<dd>
+					<h4>赢得女生芳心，盘点大屏粉色手机</h4>
+					<div class="bot clearfix">
+						<img src="img/34.jpg" alt="" />
+						<img src="img/33.jpg" alt="" />
+					</div>
+				</dd>
+				<dd>
+					<h4>赢得女生芳心，盘点大屏粉色手机</h4>
+					<div class="bot clearfix">
+						<img src="img/34.jpg" alt="" />
+						<img src="img/33.jpg" alt="" />
+					</div>
+				</dd>
+			</dl>	
+		</div>
+	</div>
+	<!-- 新用户特权 -->
+	<div class="new1">
+		<div class="clearfix">
+			<img src="img/99.jpg" class="fl" style="width:50%;height:100%;" />
+			<img src="img/98.jpg" class="fl" style="width:50%;height:50%;" />
+			<img src="img/97.jpg" class="fl" style="width:50%;height:50%;" />			
+		</div>
+		<img src="img/95.jpg" style="width:100%;height:3.541rem;margin-top:0.4rem;"  />
+	</div>
+	
+	
+	<!-- 推荐 -->
+	<div class="rec" style="width:94%;height:4.5rem;padding:0 3%;background:#f0f2f5;font-size:1.4rem;line-height: 4.5rem;text-align: center;">
+		-----------  为您推荐    -----------
+	</div>
+	<div class="recommend">
+		<ul class="clearfix" style="overflow: hidden;">
+			<li style="width:50%;float:left; box-sizing:border-box ;">
+				<img src="img/34.jpg" alt="" style="height:15.25rem;display: block;" />
+				<span style="height:2.4rem;line-height:1.3rem;">华为(HUAWEI)M3 8.4英寸 平板电脑(2560x1600 麒麟95真实)...</span>
+				<p class="clearfix" style="width:90%;height:2.5rem;margin:0.7rem auto;">
+					<i class="fl" style="color:red;font-size:1.4rem;">29.90</i>
+					<b class="fr" style="padding:0.3rem;border:0.05rem solid #2D2D2D;">看相似</b>
+				</p>			
+			</li>
+			<li style="width:50%;float:left; box-sizing:border-box ;">
+				<img src="img/34.jpg" alt="" style="height:15.25rem;" />
+				<span style="height:2.4rem;line-height:1.3rem;">华为(HUAWEI)M3 8.4英寸 平板电脑(2560x1600 麒麟95真实)...</span>
+				<p class="clearfix" style="width:90%;height:2.5rem;margin:0.7rem auto;">
+					<i class="fl" style="color:red;font-size:1.4rem;">29.90</i>
+					<b class="fr" style="padding:0.3rem;border:0.05rem solid #2D2D2D;">看相似</b>
+				</p>			
+			</li>
+			<li style="width:50%;float:left; box-sizing:border-box ;">
+				<img src="img/34.jpg" alt="" style="height:15.25rem;display: block;" />
+				<span style="height:2.4rem;line-height:1.3rem;">华为(HUAWEI)M3 8.4英寸 平板电脑(2560x1600 麒麟95真实)...</span>
+				<p class="clearfix" style="width:90%;height:2.5rem;margin:0.7rem auto;">
+					<i class="fl" style="color:red;font-size:1.4rem;">29.90</i>
+					<b class="fr" style="padding:0.3rem;border:0.05rem solid #2D2D2D;">看相似</b>
+				</p>			
+			</li>
+			<li style="width:50%;float:left; box-sizing:border-box ;">
+				<img src="img/34.jpg" alt="" style="height:15.25rem;" />
+				<span style="height:2.4rem;line-height:1.3rem;">华为(HUAWEI)M3 8.4英寸 平板电脑(2560x1600 麒麟95真实)...</span>
+				<p class="clearfix" style="width:90%;height:2.5rem;margin:0.7rem auto;">
+					<i class="fl" style="color:red;font-size:1.4rem;">29.90</i>
+					<b class="fr" style="padding:0.3rem;border:0.05rem solid #2D2D2D;">看相似</b>
+				</p>			
+			</li>
+		</ul>
+		<p id="load">点击继续加载</p>
+	</div>
+<!-- 底部 -->
+	<div class="footer">
+		<div class="clearfix">
+			<a href="javascript:;">登录</a>
+			<a href="javascript:;">注册</a>
+			<a href="javascript:;">反馈</a>
+			<a href="javascript:;">回到顶部</a>
+		</div>
+	</div>
+
+
+<!-- 返回顶部 -->
+
+
+
+<!-- 底部导航  -->
+<footer>
+	<ul>
+		
+		<li>
+			<img src="img/123.png" alt="" />
+		</li>
+		<li>
+			<img src="img/124.png" alt="" />
+		</li>
+		<li>
+			<img src="img/125.png" alt="" />
+		</li>
+		<li>
+			<img src="img/126.png" alt="" />
+		</li>
+		<li>
+			<img src="img/127.png" alt="" />
+		</li>
+	</ul>
+</footer>
+
+
+
+</div>	
+</body>
+<script>
+	
+</script>
+</html>
