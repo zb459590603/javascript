@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-1.7.2.js"></script>
+<style>
+	div{width:200px;height:200px;background:blue;}
+</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	$('#box').on('touchstart',function(){
+		alert(document.documentElement.clientWidth);
+	});
+</script>
+</html>
