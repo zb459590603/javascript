@@ -1,0 +1,44 @@
+js  4  602
+js 5 68 无缝
+
+Video有以下的属性。
+autoplay    autoplay    如果出现该属性，则视频在就绪后马上播放。    
+controls     controls    如果出现该属性，则向用户显示控件，比如播放按钮。    
+height        pixels    设置视频播放器的高度。    
+loop           loop    循环播放。    
+preload      preload    如果出现该属性，则视频在页面加载时进行加载，并预备播放。
+如果使用 "autoplay"，则忽略该属性。
+src              url    要播放的视频的 URL。    
+width           pixels    设置视频播放器的宽度。
+
+$('#myVideo').play(); // 播放
+$('#myVideo').pause(); // 暂停
+
+--------------------------------------
+<audio> 标签是 HTML 5 的新标签。
+autoplay	autoplay	
+	如果出现该属性，则音频在就绪后马上播放。
+controls	controls	
+	如果出现该属性，则向用户显示控件，比如播放按钮。
+loop	loop	
+	如果出现该属性，则每当音频结束时重新开始播放。
+preload	preload	
+	如果出现该属性，则音频在页面加载时进行加载，并预备播放。
+	如果使用 "autoplay"，则忽略该属性。
+src	url	
+	要播放的音频的 URL。
+
+
+
+http://javascript.ruanyifeng.com/笔记
+
+http://www.cnblogs.com/kiter/archive/2013/02/25/2932157.html video标签
+
+
+http://www.zhaopin.com         √
+http://www.lagou.com/            √
+https://www.liepin.com/          √
+http://www.51job.com/            √
+http://www.chinahr.com/         √
+http://www.neitui.me/
+http://www.bosszhipin.com

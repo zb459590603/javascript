@@ -1,0 +1,37 @@
+wxml  html
+wxss css
+js  javascript
+json 配置文件
+
+pages  里面的每个文件夹都是一个页面
+        index 
+        logs 
+        修改会保存会多一个文件about
+utils
+
+app.js
+app.json-->新建页面可以打开这个修改然后保存
+{}app.wxss
+
+
+
+
+
+"enablePullDownRefresh": true 下拉刷新
+
+<button type="primary"></button>确定按钮
+<button type="warn"></button>警告按钮
+<button type="primary" size="mini">aaa</button>小按钮
+<button type="primary"loading="true"></button>会转圈的图标
+
+
+
+
+
+
+
+
+
+
+
+

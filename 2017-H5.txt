@@ -1,0 +1,278 @@
+HTML5：新标签、新属性----------------------------------------
+html5新标签：
+	有用的标签(功能性标签)： video audio canvas
+	功能性语义化标签：header footer nav section
+    1<header></header>   页眉
+    1<hgroup></hgroup>   标题组合
+    1<nav></nav>         导航
+    1<footer></footer>   页脚
+    1<section></section> 区域
+    1<article></article> 文章
+    1<aside></aside>     侧边栏
+        aside写到article里面，代表相关文章、友情链接、引用文献
+        aside写到section里面article外面AD，推荐
+   1 <figure></figure>   一组图片
+   1 <figcaption></figcaption> 对figure进行说明
+   1 <time></time>       时间
+   1 <datalist></datalist> 数据列表
+	<option></option>
+        需要和输入框配合使用
+   1 <details></details> 描述信息
+        <summary></summary> 
+   1 <dialog></dialog>   对话
+   1 <address></address> 地址
+   1 <mark></mark>       标记
+   1 <progress></progress> 进度条
+   1 <meter></meter>       进度条
+表单新增控件：
+	email   邮件
+	tel     电话
+	number  数字
+	        min max step
+	 date    日期
+	time    时间
+	week    周
+	month   月
+	datetime-local  本地时间
+	color   颜色
+	range   滑块
+	search  搜索
+
+cookie：（本地存储）
+        特点：容量小(4K),有过期时间，会随着请求发送给后台，完全兼容，使用不方便
+localStorage（本地存储：性能高）：
+	特点：容量大(5M),没有过期时间，并不会发送给后台，兼容性还可以(IE6),使用及其方便
+	存：  localStorage.setItem('name', 'value')
+	取：  localStorage.getItem('name')
+	删除：  localStorage.removeItem('name')
+	全部删除：  localStorage.clear()
+sessionStorage： 用法跟localStorage一模一样，过期时间：关闭浏览器
+共同点：不安全、不能跨域、不能跨浏览器
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+CSS3：新样式（新样式兼容性，需要添加前缀）---------------------------------------------------
+浏览器前缀：
+	-webkit-    chrome、safari、opera
+	-moz-       FF
+	-ms-        IE
+	-o-         早期opera
+transform: rotate(45deg);   旋转
+	rotateX()   高度变矮
+	rotateY()   宽度变窄
+	rotateZ()   默认效果
+旋转的基准点：-webkit-transform-origin:10% 10% ;
+transform: translate(x, y)  平移
+	translate(100px, 100px);translateX(100px);translateY(100px);
+transform: scale(x,y)       缩放     不改变盒模型
+	scale(2,3)；scaleX(2)；scaleY(3)；
+transform: skew(x,y)        倾斜     不改变盒模型
+transform：rotate(45deg);   旋转45度
+transform多个值一起写：先写的后生效
+	  transform: scale(2,1) rotate(45deg) translateX(200px);
+	  先右移200px，旋转45deg，X轴放大2倍
+圆角： border-radius: 10px | 10%;
+文字阴影：text-shadow: 100px 10px 0px red;-- x    y  模糊度 颜色
+ 	text-shadow: 4px 4px 3px red,8px 8px 0px blue,12px 12px 0px green;
+块阴影： box-shadow: inset 100px 100px 100px red;--x   y  模糊度 颜色
+	[投影方式] X轴偏移量 Y轴偏移量  阴影模糊半径阴影扩展半径 阴影颜色
+线性渐变：background:-webkit-linear-gradient(top,color1, color2)
+径向渐变(圆形渐变)：background:-webkit-radial-gradient(color1, color2);
+	background: radial-gradient(200px 150px, red 30%, blue 30%);
+	background:-webkit-radial-gradient(color, color2);	
+倒影： -webkit-box-reflect: 方向 距离 渐变;
+	方向：below above, 和渐变配合使用：rgba();
+背景：background
+	多背景： background: url(),url(),url();
+	background-size: cover;
+		把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。
+	background-size: contain;
+		把图像图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域。
+蒙版：特别类似background
+	-webkit-mask: url();
+	 * 跟颜色无关，只要有颜色就可以显示出来，羽化可以生效
+	 蒙版位置：-webkit-mask-position
+真正的3D：transform-style: preserve-3d;(preserve-3d不能继承)
+	 transform: translateZ();
+	一定要给他的父级添加preserve-3d
+立方体是6个面	 
+
+3维空间---------------------------------------------------------------------
+网页：2维空间
+3维空间： 透视(景深)：观察物体的远近程度 perspective(800px)
+官网作品展示： 至少需要5张图片
+	右：
+	var arr=['l2', 'l1', 'cur', 'r1', 'r2', '', '', ''];
+	var arr=['l1', 'cur', 'r1', 'r2', '', '', '', 'l2'];
+	arr.push(arr.shift());
+	左：
+	var arr=['l2', 'l1', 'cur', 'r1', 'r2', '', '', ''];
+	var arr=['','l2', 'l1', 'cur', 'r1', 'r2', '', ''];
+	arr.unshift(arr.pop());
+ perspective：
+        a). 加给变化物体,transform: perspective(800px);
+        b). 加给父级,perspective: 800px;
+--------------------------------------------------------------------------
+翻面： 2个面
+	 点击旋转Y180deg
+	a). translateZ(), 瑕疵：有条缝
+   	b). backface-visibility: hidden; 背面不可见
+--------------------------------------------------------------------------
+3D颗粒翻转：
+	transition: 1s all ease;
+	transition-duration: 1s;    时间
+	transition-property: all;   属性
+	transition-timing-function: ease; 运动形式
+	transition-delay: 1s;       延迟
+--------------------------------------------------------------------------
+爆炸效果：
+    哪些值动：
+	opacity
+	scale
+	rotate
+--------------------------------------------------------------------------
+地理信息：navigator.geolocation  IE9+
+        .getCurrentPosition(fnSucc, fnFail)   获取当前的地理位置
+ fnSucc:
+        ev.coords.longitude  经度116.365487
+        ev.coords.latitude   纬度40.099615
+        ev.coords.accuracy   精确度
+            低于60基本不可用
+        ev.coords.altitude   海拔
+        ev.coords.altitudeAccuracy  海拔精确度
+        ev.coords.heading    朝向
+        ev.coords.speed      速度
+fnFail:
+        ev.code     状态码
+            0   未知错误
+            1   用户拒绝
+            2   googleapi
+            3   网络超时
+        ev.message  失败描述
+ Chrome：获取失败 FF：获取失败  IE：获取成功
+	实时获取：
+		a). 开个定时器
+		b). watchPosition(fnSucc, fnFail, options)
+	watchPosition(fnSucc, fnFail, {frequency: 3000})
+	        frequency：频率
+	clearWatch();   关闭监听
+百度地图--------------------------------------------------------------------
+百度地图：
+
+http://map.baidu.com/ -> 地图开放平台 -> web 开发
+
+DEMO：http://developer.baidu.com/map/jsdemo.htm#a1_2
+
+1、引入百度地图
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=您的密钥"></script>
+
+    秘钥：申请
+2、生成地图
+    var map = new BMap.Map("box");
+3、初始化地图(设置中心点)
+    var oPoint=new BMap.Point(116.365487, 40.099615);
+    map.centerAndZoom(oPoint, 15);
+4、添加标注
+    var marker = new BMap.Marker(oPoint);
+    map.addOverlay(marker);
+
+    其他：
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+webWorker----------------------------------------------------------------
+webWorker：
+    主线程：DOM渲染，渲染，绘制
+    子线程：复杂操作(计算)
+    a.js：子线程
+        var oW=new Worker('a.js');
+    通信：
+        主线程发送给子线程
+            oW.postMessage(123);
+        子线程接收消息
+            this.onmessage=function(ev){
+                console.log(ev.data);
+            };
+    发送消息：
+        obj.postMessage(data);
+    接收消息：
+        obj.onmessage=function(ev){
+            // ev.data
+        }
+    注意：
+        a). 各自有各自的作用域
+        b). 在子线程里面不能再创建子线程
+        c). 在子线程里面不能使用DOM、BOM
+    关闭子线程：
+        oW.terminate();
+webSQL：前端数据库------------------------------------------------------
+webSQL：前端数据库  
+    大小：5M
+    安全：真的不安全
+1、打开一个数据库
+    var db=openDatebase(数据库名称, 数据库版本, 数据库描述, 数据库容量);
+2、开启事务
+    事务：原子性
+        要么成功，要么失败
+    db.transaction(function(tx){
+        // 接下来所有操作
+    });
+3、创建表
+    tx.executeSql('CREATE table new(title TEXT, href TEXT)');
+4、添加数据
+    tx.executeSql('INSERT INTO new VALUES("李克强:推动互联网与制造业融合","http://www.zhinengshe.com")');
+5、查找数据
+    tx.executeSql('SELECT * FROM news', [], function(tx, result){
+        // result -> 数据
+    }, function(tx, err){
+       alert(err);
+    });
+重力感应--------------------------------------------------------------------
+重力感应：
+    window.DeviceMotionEvent
+    var acc=ev.accelerationIncludingGravity;
+    acc.x
+    acc.y
+    acc.z
+    window.addEventListener('devicemotion', function(ev){
+        var acc=ev.accelerationIncludingGravity;
+        oDiv.innerHTML=acc.x;
+    }, false);
+    oDiv.addEventListener('webkitAnimationEnd', function(){
+        oDiv.classList.remove('rotate');
+    }, false);
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+运动----------------------------------------------------------------
+基本动画：
+	transition: 1s all ease;
+	transition: 1s width ease,.5s height ease;
+	1s -> 时间  s  ms
+	all -> 哪些属性动
+	ease -> 运动形式
+		linear
+		ease
+		ease-in
+		ease-out
+		ease-in-out
+		cubic-bezier(0.11,-0.76, 0.51, 1.51)
+高级动画：
+        a). 定义动画
+            @keyframes move{
+                from{width:200px;}
+                to{width:500px;}
+            }
+        b). 执行动画
+            animation: 1s 动画名称 ease;
+animate.css：
+	官网：http://daneden.github.io/animate.css/
+高级运动深入：
+	animation: 3s test ease 次数;
+		次数：infinite是无限运动
+ animation: 1s test ease 3 alternate 2s;
+animation-name: test;           动画名称
+	animation-duration: 1s;         动画时间
+	animation-timing-function: ease;运动形式
+	animation-iteration-count: 3; 运动次数
+	animation-fill-mode: forwards;  定到远端
+	animation-play-state: paused;   暂停
+	animation-direction: alternate; 交替运动
+	animation-delay: 2s;            延迟
+	

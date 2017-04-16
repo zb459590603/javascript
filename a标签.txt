@@ -1,0 +1,5 @@
+<a href="http://www.baidu.com" target="_Blank">百度</a>
+_Blank是新窗口
+_Self是自身
+_Parent是父窗口
+_Top是顶层窗口

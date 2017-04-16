@@ -1,0 +1,32 @@
+在网页加载刚开始，对设备进行自主判断，相应加载移动端或者pc端布局和样式：
+
+对UA进行判断
+
+判断写在页面还没开始加载之前
+<head>
+   <meta charset="UTF-8">
+    <script>
+//        在移动端的页面在上面对加载页面的设备进行判断，如果不为移动设备，则跳转加载pc端样式
+        if(!(/(android|iphone|ipad|PlayBook|BB10)/i).test(window.navigator.userAgent)){
+            window.location.href = 'http://localhost:8080/web/src/index.html';
+        }
+    </script>
+   <title>Tako</title>
+</head>
+pc端页面head头中也需要加入设备判断
+<script>
+//        若设备为移动设备，则跳转加载移动端样式
+        if((/(android|iphone|ipad|PlayBook|BB10)/i).test(window.navigator.userAgent)){
+            window.location.href = 'http://localhost:8080/phone/src/index.html';
+        }
+</script>
+
+
+
+
+222222222222判断是否是移动端，接着做跳转
+<script type="text/javascript">
+var url=location.search;
+if(url.indexOf("?")!=-1){}
+else{uaredirect("index_wap.html");}
+</script

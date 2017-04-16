@@ -1,0 +1,255 @@
+移动端事件：
+	touchstart：当手指放在屏幕上触发;
+	touchmove：当手指在屏幕上滑动时，连续地触发;
+	touchend：当手指从屏幕上离开时触发;
+webkitTransitionEnd事件：在WebKit引擎的浏览器中，当CSS 3的transition动画执行结束时，触发。
+ev对象下touches属性（当前屏幕上所有触摸点的列表）
+	表示当前跟踪的触摸操作的touch对象的数组。
+	当一个手指在触屏上时，event.touches.length = 1
+ev对象下targetTouches（当前对象上所有触摸点的列表）
+	特定于事件目标的touch对象的数组。
+	touch事件会毛冒泡，所以我们可以使用这个属性指出目标对象
+ev对象下changedTouches: 涉及当前(引发)事件的触摸点的列表
+	1. 用一个手指接触屏幕，触发事件，此时这三个属性有相同的值。
+	2. 用第二个手指接触屏幕，此时，touches有两个元素，每个手指触摸点为一个值。当两个手指触摸相同元素时，
+	targetTouches和touches的值相同，否则targetTouches 只有一个值。changedTouches此时只有一个值，
+	为第二个手指的触摸点，因为第二个手指是引发事件的原因
+	3. 用两个手指同时接触屏幕，此时changedTouches有两个值，每一个手指的触摸点都有一个值
+	4. 手指滑动时，三个值都会发生变化
+	5. 一个手指离开屏幕，touches和targetTouches中对应的元素会同时移除，而changedTouches仍然会存在元素。
+	6. 手指都离开屏幕之后，touches和targetTouches中将不会再有值，changedTouches还会有一个值，
+	此值为最后一个离开屏幕的手指的接触点。
+每个touch对象都包含了以下几个属性：
+	clientX 触摸目标在视口中的X坐标
+	clientY触摸目标在视口中的Y坐标
+	Identifier: 标示触摸的唯一ID
+	pageX 触摸目标在页面中的X坐标
+	pageY 触摸目标在页面中的Y坐标
+	screenX触摸目标在屏幕中的X坐标
+	screenY 触摸目标在屏幕中的Y坐标
+	target  触摸的DOM节点目标
+DOM文档加载的步骤为：
+	（document.addEventListener('DOMContentLoaded',function(){}）
+	1、解析HTML结构。
+	2、加载外部脚本和样式表文件。
+	3、解析并执行脚本代码。
+	4、DOM树构建完成。//DOMContentLoaded
+	5、加载图片等外部文件。
+	6、页面加载完毕。//load
+
+1----------------------------------------------------------------------------------------------     
+PC： 兼容性： IE系列、FF、Chrome
+移动端： 兼容性： webkit内核浏览器
+盒模型：
+	box-sizing: content-box;
+   		 width=width+padding+border; 向外扩展
+	box-sizing: border-box;
+		width=width; 向内扩展
+calc(计算)：  - + * /
+	1、calc(100% - 100px)  注意空格
+        	2、/ * 一定不能带单位
+	3、- + 一定要带单位
+
+弹性盒子：
+	父级： display: -webkit-box;
+	子级： -webkit-box-flex: 1;占一份
+弹性盒子怎么平分： 总宽度减去固定的宽度，剩下再去平分
+需要父级加：display: -webkit-box;（以下是加给父级的）
+	水平居中： -webkit-box-pack: center;
+	垂直居中： -webkit-box-align: center;
+	平分高度： -webkit-box-orient: vertical;
+	翻转： -webkit-box-direction: reverse;
+* 弹性盒子不能和浮动一起使用
+* 弹性盒子不能和定位一起使用
+最小宽度：min-width:100px;
+区分PC还是手机：
+	@media (min-device-width: 1024px){最小宽度1024就是PC}；
+	@media (max-device-width: 1023px){最大宽大1023就是手机}；
+	@media (orientation: landscape){横屏}；
+	@media (orientation: portrait){竖屏}；
+	@media all{所有设备}；
+	@media screen{屏幕设备}；
+	@media (条件1) and (条件2){}
+        all    所有设备
+        screen 屏幕设备
+        print  打印设备
+        projection 投影设备
+        tty    电传打字机
+        aural  听觉设备
+        braille盲文设备
+        handheld 手持设备
+        tv     电视设备	
+媒体查询：
+（<link rel="stylesheet" href="pad.css" media="(min-width: 600px) and (max-width: 800px)">）
+自适应代码：   
+ ;(function(){
+        function change(){
+            document.documentElement.style.fontSize=20*document.documentElement.clientWidth/320+'px';
+        }
+        change();
+        window.addEventListener('resize', change, false);
+    })();
+移动端： 默认情况下，移动端是以pc方式显示  980
+        <meta name="viewport" 	           viewport    视窗
+        content="width=device-width,   width=device-width  当前视窗大小
+        initial-scale=1.0,	           initial-scale=1.0   初始化窗口大小
+        maximum-scale=1.0, 	           maximum-scale=1.0   最大视窗大小1
+        user-scalable=0">	           user-scalable=no/0  禁止用户缩放页面
+苹果专用：
+	<!--允许把网页以app的形式添加到主屏幕-->
+    	<meta name="apple-mobile-web-app-capable" content="yes">
+	<!--状态栏的颜色-->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+其他mate：
+ 京东：
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!--禁止识别电话号码和email-->
+    <meta name="format-detection" content="telephone=no,email=no">
+    淘宝：
+        <meta content="yes" name="apple-mobile-web-app-capable"/>
+        <!--点击屏幕全屏-->
+        <meta content="yes" name="apple-touch-fullscreen"/>
+        <meta content="telephone=no,email=no" name="format-detection"/>
+        <!--应用消息，保留系统历史记录，运动效果-->
+        <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+<!-- 强制让360浏览器用chrome内核渲染页面 -->
+<meta name="renderer" content="webkit">
+<!-- 尽量用IE最新的模式渲染 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+<meta name="HandheldFriendly" content="true">
+<!-- 微软的老式浏览器 -->
+<meta name="MobileOptimized" content="320">
+<!-- uc强制竖屏 -->
+<meta name="screen-orientation" content="portrait">
+<!-- QQ强制竖屏 -->
+<meta name="x5-orientation" content="portrait">
+<!-- UC强制全屏 -->
+<meta name="full-screen" content="yes">
+<!-- QQ强制全屏 -->
+<meta name="x5-fullscreen" content="true">
+<!-- UC应用模式 -->
+<meta name="browsermode" content="application">
+<!-- QQ应用模式 -->
+<meta name="x5-page-mode" content="app">
+2----------------------------------------------------------------------------------------------     		
+移动端：mouse类事件都不能用，必须通过绑定添加
+ touchstart：存disX dixY
+	ev.targetTouches[0].clientX
+	ev.targetTouches[0].pageX   距离页面最左边的距离
+touchmove： 改变left top
+touchend： 干掉move end
+3canvas---------------------------------------------------------------------------------------     
+canvas：画图  IE9+ Chrome Firefox
+	 var oC=document.querySelector('#c1');//canvasID
+	画笔： var gd=oC.getContext('2d'); 所有画图的方法都在gd
+	gd.moveTo(x, y);    // 把画笔移到哪里
+	gd.lineTo(399,79);  // 连到哪里
+	gd.stroke();        // 描边
+	gd.strokeStyle='red'; // 描边颜色
+    	gd.lineWidth=10;    // 改变线宽
+    	gd.fill();          // 填充
+    	gd.fillStyle='red'; // 填充颜色
+    	* gd.lineWidth 往两边扩展
+    	* 后画的会把先画的覆盖
+闭合路径：
+    gd.closePath();
+开始路径：
+    gd.beginPath();     // 开始画路径，跟之前没有关系
+画图基本流程：
+    gd.beginPath();
+    // 画图
+    gd.closePath(); // 看需求
+    gd.stroke();
+矩形：
+	1). gd.strokeRect(x,y,w,h);自带一个图形
+	2). gd.fillRect(x,y,w,h);
+弧：
+	gd.arc(cx, cy, r, 起始角度, 结束角度, 是否逆时针);
+简易柱状图：
+        function rnd(n,m){
+            return parseInt(Math.random()*(m-n))+n;
+        }
+        window.onload = function () {
+            var oC=document.querySelector('#c1');
+            var gd=oC.getContext('2d');
+            var arr=[100,200,500,800,320,180,159,496,356];
+            var iMax=Math.max.apply(null, arr);
+            // 柱状图的高度
+            var aHeight=[];
+            for(var i=0; i<arr.length; i++){
+                aHeight[i]=arr[i]/iMax*oC.height;
+            }
+            var w=oC.width/(3*arr.length-2);
+            var space=w*2;
+            for(var i=0; i<aHeight.length; i++){
+                gd.fillStyle='rgb('+rnd(0,256)+','+rnd(0,256)+','+rnd(0,256)+')';
+                gd.fillRect(i*(w+space), oC.height-aHeight[i], w, aHeight[i]);
+            }
+        };
+4angular-------------------------------------------------------------------------------     
+
+
+
+
+
+
+
+
+=========================================
+手机看网页，IP访问电脑：win+r -> cmd -> ipconfig
+	电脑和手机一定要在同一网段
+=========================================
+触摸事件介绍：
+Gestures：
+	这个事件针对IOS设备上的，一个Gestures事件在两个或更多手指触摸屏幕时触发。
+          如果任何手指你正在监听的Gesture事件(gesturestart，gesturechange，
+          gestureend)节点上，你将收到对应的gestures事件
+	Gesturestart：当一个手指已经按在屏幕上，而另一个手指又触摸在屏幕时触发
+	Gesturechange：当触摸屏幕的任何一个手指的位置发生改变的时候触发
+	Gestureend：当任何一个手指从屏幕上面移开时触发
+触摸事件和手势事件的之间关系：
+	当一个手指放在屏幕上时，会触发touchstart事件，而另一个手指触摸在屏幕上
+          时触发gesturestart事件，随后触发基于该手指的touchstart事件
+	如果一个或两个手指在屏幕上滑动时，将会触发gesturechange事件，
+          但是只要有一个手指移开时候，则会触发gestureend事件，紧接着会触发touchend事件
+手势的专有属性：
+           rotation: 表示手指变化引起的旋转角度，负值表示逆时针，正值表示顺时针，从0开始；
+           scale: 表示2个手指之间的距离情况，向内收缩会缩短距离，这个值从1开始的，并随距离拉大而增长。
+1、判断是否为iPhone：
+	function isAppleMobile() {
+    	       return (navigator.platform.indexOf(‘iPad‘) != -1);
+	};
+2、禁止 iOS 弹出各种操作窗口
+	-webkit-touch-callout:none
+3、 禁止用户选中文字
+	-webkit-user-select:none
+4、 关于 iOS 系统中，中文输入法输入英文时，字母之间可能会出现一个六分之一空格
+	this.value = this.value.replace(/\u2006/g, ‘‘);
+5、 Andriod 上去掉语音输入按钮
+	input::-webkit-input-speech-button {display: none}
+判断屏幕是否旋转的JS代码如下：
+function orientationChange() {
+    switch(window.orientation) {
+        case 0:
+        alert("肖像模式 0,screen-width: " + screen.width + "; screen-height:" + screen.height);
+ break;
+        case -90:
+        alert("左旋 -90,screen-width: " + screen.width + "; screen-height:" + screen.height);
+ break;
+        case 90:
+        alert("右旋 90,screen-width: " + screen.width + "; screen-height:" + screen.height);
+ break;
+        case 180:
+        alert("风景模式 180,screen-width: " + screen.width + "; screen-height:" + screen.height);
+        break;
+    };
+};
+// 添加测试监听函数代码如下：
+addEventListener(‘load‘, function(){
+    orientationChange();
+window.onorientationchange = orientationChange;
+});

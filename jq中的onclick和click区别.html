@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+	#div1{width:300px;height:300px;margin:100px auto;background:red;}
+	#div2{width:100px;height:100px;margin:0 auto;background:pink;}
+</style>
+<script>
+	window.onload=function(){
+		var oDiv1=document.getElementById('div1');
+		var oDiv2=document.getElementById('div2');
+		
+	}
+</script>
+</head>
+<body>
+	<div>  
+    <h1>Click</h1>  
+    <button class="add">Click me to add new item</button>  
+    <ul class="li">  
+        <li>I am old item.<button class="delete">Delete</button></li>  
+        <li>I am old item.<button class="delete">Delete</button></li>  
+        <li>I am old item.<button class="delete">Delete</button></li>  
+    </ul>  
+</div>  
+
+jQuery Click 事件
+[html] view plain copy
+<script type="text/javascript" src="jquery-1.8.3.min.js"></script>  
+<script type="text/javascript">  
+$(".add").click(function(){  
+    $(".li").append('<li>I am new item.<button class="delete">Delete</button></li>');  
+});  
+$(".delete").click(function(){  
+    $(this).parent().remove();  
+});  
+</script>  
+上面的例子大家可以发现,通过button添加的li无法删除,原因在于是新添加的HTML代码,没有绑定click事件,解决方法:将click事件换成on事件,代码如下:
+[html] view plain copy
+$(".li").on('click','.delete',function(){  
+    $(this).parent().remove();  
+});  
+</body>
+</html>

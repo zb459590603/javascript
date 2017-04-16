@@ -1,0 +1,1148 @@
+获取样式：
+	行间：alert(oBox.style.width);   --->获取出的是字符串带px
+	非行间：alert(oBox.currentStyle?oBox.currentStyle.width:getComputedStyle(oBox,false).width);
+	    getComputedStyle(元素,false).width	-->兼容chrome firefox  IE10/9/	高版本浏览器
+	    元素.currentStyle.width	-->兼容IE6、7、8
+	obj.offsetHeight  --->获取出的是数字
+isNaN:
+	isNaN(NaN) ->true
+	isNaN(数字) ->false
+字符串转换数字：
+	parseInt()	解析成整数
+	parseFloat() 解析成浮点数 - 小数
+	Number()	 数字
+	NaN -> not a Number 不是一个数字	-->在JS里面跟谁都不相等，包括本身 
+switch/if()else():
+	case 1:
+		alert(条件成立显示这个);
+		break;
+	default:
+		alert('如果上边的条件都不成立就显示这个');
+		break;
+while/for:
+	while(条件 a<10){
+		a++;
+		break;  -->(continue跳出当次循环)
+	}
+随机数：
+	function toDou(a,b){
+		return parseInt(Math.random()*(b-a)+a);
+	}
+onchange事件：	
+	当..改变的时候 - 百分之九十的时候用于select标签（）
+	获取select的value -> 当前选中的option的vlaue
+数据类型：
+	typeof(变量名)   -  看变量类型
+	数字  ->  number	数字
+	字符串 ->	string	字符串
+	元素 -> object		对象
+		元素
+		数组
+		null - 空对象
+	布尔值 ->  boolean	
+		true真
+		false假
+	未定义 -> undefined
+		1)声明变量但是没有赋值
+		2)获取元素本身不存在的属性的时候
+		3)TagName获取元素直接使用时候
+	函数 ->  function
+伪类：(a的伪类兼容性最好)
+	a:link {color: #FF0000} /* 未访问的链接 */                    1
+	a:visited {color: #00FF00} /* 已访问的链接 */	2
+	a:hover {color: #FF00FF} /* 当有鼠标悬停在链接上 */   3
+	a:active {color: #0000FF} /* 被选择的链接 */	4
+时间对象：new Date()
+	var oDate = new Date();
+	oDate.getFullYear();	年
+	oDate.getMonth();		月  0月开始
+	oDate.getDate();		日
+	oDate.getDay();			星期	0 - 星期日
+	oDate.getHours();		小时
+	oDate.getMinutes();		分钟
+	oDate.getSeconds();		秒
+	设置时间：-  在时间对象的基础上设置的
+		setFullYear(年,月,日)
+		setHours(时,分,秒,毫秒)
+	时间戳：getTime();
+		此刻时间距离1970年的那一天的毫秒数
+input:
+	disabled 就不能改变或者选中了
+	placeholder 输入框默认不能选中的文字
+字符串：
+	1)str.indexOf('小字符串') - 数字
+		查找字符在字符串具体位置的 - 从左往右找
+			a)如果找到了,就不往后看了
+			b)区分大小写
+			c)如果找不到就返回-1
+		用途:识别浏览器 - 
+			【○】navigator.userAgent - 查看浏览器信息
+	2)str.lastIndexOf('小字符串') - 数字
+		查找字符在字符串的位置
+			a)从右往左但是从左往右数
+	3)str.substring(开始位置,结束位置)不包含结束位置 - 截取出来的字符串
+		截取字符串
+	  str.substring(开始位置) - 从开始位置一直截取到最后
+		截取扩展名： - 最后一个.
+	4)str.split(切的方式) - 数组
+		切割字符串
+	  str.split('');	切的碎碎的
+	5)英文转大小写
+		a)转大写：str.toUpperCase(); - 大写的字符串
+			alert(str.replace(/\w+/g, function(s){
+            				return s.charAt(0).toUpperCase()+s.substring(1);
+        			}));
+		b)转小写：str.toLowerCase(); - 小写的字符串
+	6)str.charAt(第几个) - 字符串中的第几个字符
+数组：
+	1)arr.push(添加的东西) - 数组	往数组后面添加一项
+	2)arr.unshift(添加的东西) - 数组	往数组前面添加一项
+	3)arr.pop()		从数组后面删除一项，删除的一项被它吃了
+	4)arr.shift()		从数组前面删除一项，删除的一项被它吃了
+	5)arr.splice(开始位置,删除个数,添加元素1,添加元素2....) 万能的操作
+	      a)删除 - arr.splice(开始位置,删除个数)
+	      b)添加 - arr.splice(开始位置,删除个数,元素1,元素2,元素3...)
+	        	开始位置前面开始添加
+	      c)替换 - arr.splice(开始位置,删除个数,元素1,元素2)
+	6)arr.join(连接的方式)	数组变成字符串
+		var arr1=[1,2,3];   -->  str = arr1.join('_');  -->1_2_3
+	7)数组连接： arr.concat(数组1,数组2);
+	8)数组翻转 - arr.reverse()
+	9)数组排序：arr.sort(function(a,b){return a-b});从小到大	
+数学小方法：
+	Math.random() 	随机数
+	Math.abs() 		绝对值
+	Math.max() 		求最大值
+	Math.min() 		求最小值
+	Math.pow(数,次方数)		求次方
+	Math.sqrt(数)	开平方
+	保留几位小数： toFixed(2)  ->  保留2位小数
+eval() - 把字符串转化成js可执行的程序
+	数组形式的字符串可以转
+	函数形式的字符串可以转
+	eval() - 功能过于强大 
+	json解析时候错误
+	解决办法：
+	var str = '{a:5,b:10,c:11,d:15}';
+	var json = eval('('+str+')');转成json对象，如果type属性为getJSON就不用转
+js2---------------------------------------------------------------------------------------------
+ECMAScript：  解释器、翻译器
+DOM：Document Object Model  文档对象模型
+BOM：Browser Object Model  浏览器对象模型
+ 父级：  obj.parentNode 获取出来是一个元素
+ 子级：  obj.children 只能获取一层,获取出来是一组元素
+兄节点：var oLi2=oLi.previousElementSibling高 || oLi.previousSibling;低
+弟节点：var obj2=obj.nextElementSibling高 || obj.nextSibling;低
+ 创建： var oDiv = document.createElement('div');
+ 添加：
+	往父节点后面添加：父级.appendChild(oDiv);
+	往前面添加：obj.insertBefore(添加的元素，谁之前);
+删除：父级.removeChild(子级)；
+
+滚动条滚动的距离：
+	var scrollTop=document.documentElement.scrollTop || document.body.scrollTop;
+可视区的高度：
+	document.documentElement.clientHeight；
+物体的高度：
+	obj.offsetHeight
+广告定位：
+	top=scrollTop+clientHeight-offsetHeight;
+滚动条滚动事件：
+	window.onscroll
+窗口大小改变：
+	window.onresize
+距离有定位的父级：
+	obj.offsetLeft：物体距离左边的距离
+	obj.offsetTop：物体距离上面的距离   
+求距离最左边的距离    
+    obj.parentNode   结构上父级   document
+    obj.offsetParent 有定位的父级  document.body
+    function getPos(obj){
+        var l=0;
+        var t=0;
+        while(obj){
+            l+=obj.offsetLeft;
+            t+=obj.offsetTop;
+            obj=obj.offsetParent;
+        }
+        return {left: l, top: t};
+    }; 
+图片延时加载：
+	滚轮滚动的距离+可视区高度>=图片距离顶部的距离； F12 -> network
+图片预加载：悄悄的加载进来
+	var oImg=new Image();
+自定义属性：
+    设置：
+        obj.setAttribute('属性名', '值');
+    获取：
+        obj.getAttribute('属性名');
+    删除：
+        obj.removeAttribute('属性名');
+    * setAttribute需要和getAttribute配合使用
+吸顶条：  
+	scrollTop>=吸顶条top   变成固定定位
+事件对象：包含(描述)了更加详细的信息
+	 event：兼容性：Chrome、IE全系列
+	 ev： 兼容性：高级浏览器
+	处理兼容：  var oEvent=ev || event;
+可视区的坐标：
+            oEvent.clientX
+            oEvent.clientY
+        * 以后大家使用clientX、clientY需要加上滚动条的距离
+事件冒泡：
+	触发子元素的事件，传递给父级，如果父级有这个事件，则会触发，如果没有继续传递，document为止
+阻止冒泡：
+	oEvent.cancelBubble=true;
+	* 如果没有影响到你不用管
+onkeydown  键盘按下
+onkeyup       键盘抬起
+查看键盘编码：
+         document.onkeyup=function(ev){
+          	  var oEvent=ev || event;
+          	  alert(oEvent.keyCode);
+        };
+键盘编码oEvent.keyCode：
+	37：左	38：上	39：右	40：下
+	空格：32	回车：13	
+	shift：16	ctrl：17	alt：18
+	删除键：8	tab：9
+只能输入数字的文本框：
+    	48-57
+拖拽：
+	事件捕获： oDiv.setCapture && oDiv.setCapture();  return false;
+	释放捕获： oDiv.releaseCapture && oDiv.releaseCapture();
+事件绑定-------------------------------------------------------
+事件绑定：(return false碰到addEventListener失效)
+    obj.addEventListener(事件, 函数, false);
+        事件：没有on
+        false：事件冒泡  true：事件捕获
+        兼容性：高级浏览器
+    obj.attachEvent(事件, 函数);
+        兼容性：IE系列
+
+        处理兼容性：把obj.addEventListener当做条件
+
+    事件绑定-封装函数：
+        function addEvent(obj, sEv, fn){
+            if(obj.addEventListener){
+                obj.addEventLisntener(sEv, fn, false);
+            }else{
+                obj.attachEvent('on'+sEv, fn);
+            }
+        }
+
+事件解绑定：
+    obj.removeEventListener(事件, 函数, false);  ------高版本
+    obj.detachEvent(事件，函数);-----------IE 
+function removeEvent(obj, sEv, fn){
+    if(obj.removeEventListener){
+        obj.removeEventListener(sEv, fn, false);
+    }else{
+        obj.detachEvent('on'+sEv, fn);
+    }
+}    
+    ** 事件解绑定不能解除匿名函数
+
+    函数本质：每一个函数都是new出来的
+
+    function removeEvent(obj, sEv, fn){
+        if(obj.removeEventListener){
+            obj.removeEventListener(sEv, fn, false);
+        }else{
+            obj.detachEvent('on'+sEv, fn);
+        }
+    }
+
+    事件捕获：
+        obj.addEventListener(事件, 函数, true);
+
+事件冒泡：
+	子元素 -> 父元素
+	触发子元素的事件，会传递给父级，如果父级有这个事件，则会触发，如果没有则会继续传递
+事件捕获：
+	父元素 -> 子元素
+-------------------------------------------------------
+事件委托-------------------------------------------------------
+事件委托： 
+	var target=oEvent.srcElement || oEvent.target;
+	oEvent.srcElement兼容性：Chrome、IE系列
+	oEvent.target兼容性：高级浏览器
+ target.tagName  ->  触发事件的标签(大写)
+把事件委托给父级，条件成功时才行：
+        oBox.onclick=function(ev){
+	var oEvent = event||ev;
+	var target = oEvent.srcElement||oEvent.target;
+	//alert(target.tagName)
+	if(target.tagName == 'P'){
+		target.style.background='blue';
+	}
+        }
+事件委托好处：
+	1、性能高
+	2、可以给未来元素添加事件
+-------------------------------------------------------
+this：当前触发事件的元素
+	1、定时器
+	2、多包了1层
+	3、行间事件
+	4、attachEvent
+-------------------------------------------------------
+实时统计输入的文字：  
+  <script>
+        window.onload = function () {
+            var oT=document.getElementById('t1');
+            var oSpan=document.getElementById('span1');
+
+            var timer;
+            if(navigator.userAgent.indexOf('MSIE 9.0')!=-1){
+                oT.onfocus=function(){
+                    timer=setInterval(function(){
+                        oSpan.innerHTML=oT.value.length;
+                    }, 30);
+                };
+                oT.onblur=function(){
+                    clearInterval(timer);
+                };
+            }else{
+                oT.oninput=oT.onpropertychange=function(){
+                    oSpan.innerHTML=oT.value.length;
+                };
+            }
+        };
+    </script>
+-------------------------------------------------------
+实时统计文字：
+        window.onload = function () {
+            var oT=document.getElementById('t1');
+            var oSpan=document.getElementById('span1');
+
+            var timer;
+            if(navigator.userAgent.indexOf('MSIE 9.0')!=-1){
+                oT.onfocus=function(){
+                    timer=setInterval(function(){
+                        oSpan.innerHTML=oT.value.length;
+                    }, 30);
+                };
+                oT.onblur=function(){
+                    clearInterval(timer);
+                };
+            }else{
+                oT.oninput=oT.onpropertychange=function(){
+                    oSpan.innerHTML=oT.value.length;
+                };
+            }
+        };
+domReady-------------------------------------------------------
+          domReady(function){alert(1)};
+          DOM加载完执行，会比onload要先执行
+ function domReady(fn){
+            if(document.addEventListener){
+                document.addEventListener('DOMContentLoaded', function(){
+                    fn && fn();
+                }, false);
+            }else{
+                document.attachEvent('onreadystatechange', function(){
+                    if(document.readyState=='complete'){
+                        fn && fn();
+                    }
+                });
+            }
+        }
+onmouseover-------使用onmouseenter就可以--------------------------
+鼠标移入父级的时候子级不触发：
+        window.onload = function () {
+            var oDiv=document.getElementById('div1');
+
+            oDiv.onmouseover=function(ev){
+                var oEvent=ev || event;
+                var from=oEvent.fromElement || oEvent.relatedTarget;
+
+                if(oDiv.contains(from))return;
+                alert('移入了');
+            };
+        };
+移出父级的时候触发，父级到子级不触发：（使用onmouseleave）
+ window.onload = function () {
+            var oDiv=document.getElementById('div1');
+
+            oDiv.onmouseout=function(ev){
+                var oEvent=ev || event;
+                var oTo=oEvent.toElement || oEvent.relatedTarget;
+                if(oDiv.contains(oTo))return;
+                alert('移出了');
+            };
+        };
+jsonp/ajax-------------------------------------------------------
+ajax(异步的javascript和XML)：无刷新从服务器取数据
+jsonp：跨域取数据
+	只能get，不能post
+状态码：
+    200     OK
+    301     永久重定向
+    302     临时重定向
+    304     缓存没有更新
+    403     没有权限
+    404     找不到文件
+    414     URL太长
+    500     服务器错误
+    502     服务器错误
+
+    * 4XX 一般是前端的问题
+    * 5XX 一般是后台的问题
+
+
+正则-------------------------------------------------------------------
+str.search(reg): 找不到返回-1
+	var str='welcome to china';
+	var reg = new RegExp('c');
+	console.log(str.indexOf('c'));   3
+	console.log(str.search(reg));   3
+str.match(reg)： 
+	没有匹配上,返回null
+	把所有匹配到的内容放到一个数组里面
+弄出来一个正则：
+	var reg=new RegExp();
+	var reg=new RegExp('c');
+	var reg=new RegExp('内容', '选项');
+    	       选项：
+		i    ignore    忽略大小写
+		g    global    全部
+		m    mutil-line 多行(匹配回车)
+简写：
+	var reg=/3/;
+	var reg=/C/i;
+	var reg=/内容/选项;
+
+\     转义
+\d    digital    数字
+\w   word      单词或数字或_  [0-9a-zA-Z_]
+\s   space     空白符
+\D   非数字
+\W   非单词数字_
+\S   非空白符
+\b   边界
+.      任意字符
+\.    正则里的点
+
++：最少一个，最多不限
+或： |
+^：开头
+$：结尾
++ -> {1,}	 {n,}  最少1个，最多不限
+? -> {0,1}	 {n,m} 0到1，可有可无
+* -> {0,}	 可以没有，有了不限
+
+方括号:[]
+	1、[abc]  a|b|c    /ab[abc]d/  abad|abbd|abcd
+	2、[0-9]  \d 数字
+	3、[a-z]  字母
+	4、[A-Z]  大写字母
+	5、[0-9a-zA-Z]  0-9或a-z或A-Z	
+匹配座机号： 010-45645645
+	/^(0\d{2,3}-)?[1-9]\d{6,7}$/
+年龄：18-100
+	/^(1[89]|[2-9]\d|100)$/
+姓名：汉字2-4
+	/^[\u4e00-\u9fa5]{2,4}$/
+邮箱：  数字字母下划线@数字或字母-.字母{2,8}
+	/^\w+@[0-9a-zA-Z-]+(\.[a-zA-Z]{2,8}){1,2}$/	
+reg.test(str); -> 检测这个字符串符不符合正则
+
+str.replace(被替换内容, 替换成什么);
+str.replace(正则, 替换成什么);
+str.replace(正则/被替换内容, function(s){
+    // s -> 正则匹配上的内容
+});
+
+MVC--------------------------------------------------------------------
+MVC：三层模型、三层架构
+	M  Module  模型   数据
+	V   View       视图   展示
+	C   Controller 控制器    从M里面拿数据，到V里面展示
+MVVM：V直接去M里面拿数据
+MVC的好处： 分工明确，职责分明
+
+jQuery--------------------------------------------------------------------
+语法：
+	1、$(document).ready(function)
+	2、$().ready(function)
+	3、$(function)
+JQuery小方法：	
+	$(obj).hide()   // 消失
+	$(obj).show()   // 显示
+	$(obj).slideDown() // 下滑显示
+	$(obj).slideUp()   // 上滑隐藏
+	$(obj).fadeOut()   // 淡出
+	$(obj).fadeIn()    // 淡入
+	$('#div1').fadeIn(时间)
+	
+	$(this).addClass('active');
+   	$('#box div').removeClass('active');
+    	$('#box div').eq(n)   第n个div
+    	$(this).index()       索引值
+获取浏览器显示区域的高度 ： $(window).height(); 
+获取浏览器显示区域的宽度 ：$(window).width();
+获取页面的文档高度 ：$(document).height();
+获取页面的文档宽度 ：$(document).width();
+获取滚动条到顶部的垂直高度 ：$(document).scrollTop();
+获取滚动条到左边的垂直宽度 ：$(document).scrollLeft();
+元素到页面顶部的距离：$("#box").offset().top
+
+
+class添加删除切换：
+	$("#div1").toggleClass("active");
+hover效果：$('div').hover(function(){
+		$(this).css('background','pink');
+	},function(){
+		$(this).css('background','red');
+	});
+链式操作：$('#box div').eq($(this).index()).addClass('active');
+表单：
+	$(obj).val();   获取
+	$(obj).val('xx');  赋值
+非表单：
+	$(obj).html();  获取
+	$(obj).html('你不是一个div'); 赋值
+css：
+	$('#div1').css('width')   获取
+	$('#div1').css('width', '500px');  赋值
+	$('#div1').css({'background':'blue','width':'500px'});
+attr：
+	$(obj).attr('属性名')  获取
+	$(obj).attr('属性名', '属性值'); 设置
+	$(obj).attr({})        设置多个值
+jQuery运动：（使用animate: 最好加上.stop();）
+	$(obj).animate(json, options);
+	           json：哪些值动
+	           options：
+   	    	duration: 时间
+		complete：运动结束后回调函数
+		easing：运动形式
+		        linear：匀速
+		        swing：先加速再减速
+	$('#div1').animate({left: 500});
+	$('#div1').stop().animate({top: -150});
+jquery.easing.1.3.js  这个插件下载后有很多运动形式
+基本选择器：
+        $('#div1')  -> ID
+        $('.box')   -> class
+        $('div')    -> 标签
+        $('div span')
+        $('div,p')
+        $(obj).find('li')  从obj下面获取li
+伪类选择器：
+        $(obj:first)   第一个
+        $('obj:last')  最后一个
+        $('obj:eq(n)') 第n个
+        $('obj:odd')   奇数行
+        $('obj:even')  偶数行
+        $('obj:gt(n)') 大于n
+        $('obj:lt(n)') 小于n
+属性选择器：
+        $('input[type=button]')
+包含选择器：
+        $('obj:has(p)')  包含p标签
+        $('obj:contains(p)')  包含p文本
+创建元素：
+	$('<p>我是一个p标签</p>');
+添加元素：
+	$('<p>我是一个p标签</p>').appendTo();  添加到内部的后面
+	$('<p>我是一个p标签</p>').prependTo($('#div1'));  添加到内部的前面
+	$('<p>我是一个p标签</p>').insertBefore($('#div1')); 添加到外部的前面
+	$('<p>我是一个p标签</p>').insertAfter($('#div1')); 添加到外部的后面
+删除元素：
+	$('#div1').remove();
+	$(this).parent().remove();删除父级
+关于父级：
+	$('#div3').parent().attr('id');  结构上的父级
+	$('#div3').offsetParent().attr('id'); 有定位的父级
+事件绑定：
+	$('#div1').bind(sEv, fn);
+事件解绑定：（* 不能解绑匿名函数）
+	$('#div1').unbind(sEv, fn);
+	如果unbind没有参数，就删除所有的事件，如果一个sEv，就删除所有的sEv事件
+        
+    $(obj).live(sEv, fn); 给未来元素添加事件
+    $(obj).die(sEv, fn);移除通过live添加的所有事件
+
+    $('#ul1').on('click', 'li a', fn); 添加事件
+    $('#ul1 li').off('click', 'a', fn); 删除事件
+
+事件对象： ev
+	        $(function(){
+           		 $('#div1').click(function(ev){
+               		      alert(ev.clientX);
+            		});
+       	        });
+阻止事件冒泡：
+	原生js：  ev.cancelBubble=true;
+	 jQuery： return false;
+	只阻止事件冒泡： ev.stopPropagation();
+阻止默认事件：
+	原生js： return false;
+	jQuery： return false;
+	只阻止默认事件： ev.preventDefault();
+
+
+物体信息：
+	$(obj).width()    物体实际的宽度
+	$(obj).height()   物体实际的高度
+	$(obj).outerWidth() 物体盒模型宽度
+	$(obj).outerHeight()物体盒模型高度
+	$(obj).offset().left    绝对位置
+	$(obj).offset().top
+	$(obj).position().left  距离有定位父级的left
+	$(obj).position().top
+each循环便利：
+	$.each(arr,function(index,element){});
+交互：（浏览器对于同一个url只访问一次，随意加随机数：url: 'a.txt?t='+Math.random(),）
+    GET：不安全、容量小(32K)、有缓存	好处可以：分享
+    POST：相对安全、容量大(1G)、没有缓存
+0   ajax对象准备完成，发送请求
+1   发送成功
+2   接收数据
+3   解析数据
+4   完成
+    ajax：
+        $.ajax({
+            url: 'get.php',
+            data: {
+                a: 12,
+                b: 5
+            },
+            success: function(str){
+                alert(str.status);
+            }
+        });
+使用ajax需要注意的地方：
+	1、从后台拿到的数据都是字符串： eval('('+str+')');
+	2、编码格式一定要一样： utf-8
+	3、有缓存： 加随机因子 -> 防止缓存， 加随机数：Math.random();
+4、数据跟格式没有任何关系 ：格式：给人看的
+5、不能有中文目录并且一定要在服务器环境下面
+//把success的str解析成json格式的两种方法：(这两种方法的参数值接受字符串)IE8+
+	var json = eval( '(' + str + ')' )； 不安全、任何数据、完全兼容
+	var json = JSON.parse( str );       安全、标准数据、不太兼容
+//php端对数据，进行json_encode()处理，js端会数据进行JSON.parse()处理。
+        $.ajax({
+            url: 'post.php',
+            type: 'post',
+            data: {
+                a: 12,
+                b: 5
+            },
+            success: function(str){
+                alert(str);
+            },
+            error: function(json){
+                // console.log(json);
+                alert(json.status);
+            }
+        });
+    jsonp：
+        $.ajax({
+            url: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',//百度接口
+            data: {
+                wd: 'a'
+            },
+            jsonp: 'cb',    // cbName
+            dataType: 'jsonp', // 使用jsonp
+            success: function(json){
+                alert(json.s);
+            }
+        });
+jsonp实现原理：
+	利用<script>标签没有跨域限制的“漏洞”（历史遗迹啊）来达到与第三方通讯的目的。
+当需要通讯时，本站脚本创建一个<script>元素，地址指向第三方的API网址，
+形如：     <script src="http://www.example.net/api?param1=1&param2=2"></script>    
+ 并提供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。    
+ 第三方产生的响应为json数据的包装（故称之为jsonp，即json padding），
+形如：     callback({"name":"hax","gender":"Male"})     这样浏览器会调用callback函数，
+并传递解析后json对象作为参数。本站脚本可在callback函数里处理所传入的数据。
+
+jquery写插件：
+        $.fn.toRed=function(){        //写一个的时候这么写
+	this.css('background', 'red');
+        };
+        $('#div1').click(function(){        //使用写好的插件
+	$('#div1').toRed();
+        });
+        $.fn.extend({        //定义多个插件
+            toRed: function(){
+                this.css('background', 'red');
+            },
+            toBlue: function(){
+                this.css('background', 'blue');
+            }
+        });
+        //调用的时候和定义一个的时候一样
+作用域链：
+	优先访问自己的局部变量，如果没有，寻找父级的局部变量，依次往上查找，直到全局，如果全局没有，报错
+---------------------------------------------------------------------------
+网络性能：
+1、减少http请求
+    合并js文件、合并css文件、雪碧图
+2、如果没有透明的图片使用jpg
+3、减少http请求大小
+    压缩js文件、压缩css文件
+怎么压缩：
+    1、压缩工具   http://tool.oschina.net/jscompress
+    2、自动化构建工具
+        grunt
+        gulp
+4、图片延迟加载
+5、CDN(Content Delivery Network)
+    内容分发网络
+    花钱
+6、阻塞加载
+    异步加载
+        img
+        css
+        html
+    同步加载
+        js(前一个js没有加载完，后一个不加载)
+
+    * 如果是别人的js，下载下来
+    * 如果是别人的js，放到body的最后，自己的可以选择放在head里面
+
+面向对象--------------------------------------------------------------------
+this指向：（函数this默认属于window）
+	this优先级：多包一层失效
+	new -> object
+	定时器 -> window
+	事件 -> 触发事件的元素
+	方法 -> 方法属于谁
+属性：属性属于某一个特定的对象
+方法：函数方法就是某一个对象身上的函数，谁调用就属于谁
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+
+事件：--------------------------------------------------------------------
+滚动条滚动事件：
+	window.onscroll
+窗口大小改变：
+	window.onresize
+获取焦点：
+	obj.onfocus
+失去焦点：
+	obj.onblur
+强制获取焦点：
+	obj.focus
+onmousedown    	 鼠标按下
+onmousemove    	 鼠标移动
+onmouseup       	 鼠标抬起
+onkeydown  	 键盘按下
+onkeyup      	 键盘抬起
+oncontextmenu  	 右击事件
+onclick		 鼠标点击
+onmouseover	 鼠标移入(1)
+onmouseup	 鼠标移出(2)
+onmouseenter	 鼠标移入(1)父级和子级直接不触发
+onmouseleave	 鼠标移出(2)父级和子级直接不触发
+onmousewheel	 滚轮事件
+---------------------------------------------------------------------------------------------
+字符串切成数组：
+	str.split(切的方式);
+数组搞成字符串
+	arr.join(连接的方式);
+IE67和火狐区分：	
+	大家还可以这样来区分IE6，IE7，firefox :background:orange;*background:green;_background:blue;
+浏览器信息 navigator.userAgent：
+        谷歌 -> Chrome
+        火狐 -> Firefox
+          IE   -> MSIE
+	if(navigator.userAgent.indexOf('Chrome') != -1){
+		alert('我是谷歌浏览器');
+	}else if(navigator.userAgent.indexOf('Firefox') != -1){
+		alert('我是火狐浏览器');
+	}else if(navigator.userAgent.indexOf('MSIE') != -1){
+		alert('我是IE系列');
+	}else{
+		alert('滚');
+	}
+异常：try{
+		// 主管
+		var oBox2 = document.getElementById(box2);
+	}catch(e){
+		// alert(e.message)
+	}
+BOM：Browser Object Model
+    浏览器对象模型
+
+    window.open新打开一个页面
+
+    window.open(地址, 打开方式);
+        打开方式：
+            _blank  新页面
+            _self   当前页面
+    Chrome：拦截      从用户体验
+    FF：阻止
+    IE：直接打开
+
+    如果是用户触发：直接打开
+
+    var win=window.open();
+
+    window.close();
+
+    Chrome：直接关闭
+    FF：没有反应
+    IE：给个提示框
+BOM：   
+    window.location.href 当前页面的地址
+    window.location.search 数据
+    window.location.hash   锚点
+    其他信息：
+        window.location.host      地址
+        window.location.hostname  域名
+        window.location.pathname  路径
+        window.location.port      端口
+        window.location.protocol  协议
+关于地址：
+    http://localhost:63342/2016-5-30/BOM2.html?aaa=12&bbb=5
+    问号后面是数据
+    aaa=12&bbb=5 数据
+    http://localhost:63342/2016-5-30/BOM3.html#1
+    警号后面是锚点
+    历史记录：
+        window.history
+        window.history.forward(); 前进
+        window.history.back();    后退
+        window.history.go(数字);
+            数字：
+                1  前进
+                -1 后退
+                2  前进2个页面
+                -2 后退2个页面
+单独设置ＩＥ不同版本的样式：
+	.bb{
+		width:32px;height:32px;
+   		 background-color:#f1ee18;/*所有识别*/
+   		 .background-color:#00deff\9; /*IE6、7、8识别*/
+    		+background-color:#a200ff;/*IE6、7识别*/
+    		_background-color:#1e0bd1;/*IE6识别*/
+	}
+	
+【】【】【】压缩工具   http://tool.oschina.net/jscompress
+document.write('网页面中写东西');
+console.log()
+查看是不是构造函数：
+        var arr=new Array();	alert(arr instanceof Array);
+        var oDate=new Date();	alert(oDate instanceof Date);
+        var reg=new RegExp();	alert(reg instanceof RegExp);
+设置页面中所以a标签的默认打开方式：
+	<base href="" target="_blank" />
+一个带有指定消息和 OK 及取消按钮的对话框：
+	var  t=confirm('你确定删除吗？');
+返回顶部：（window.onscroll=function(){}）
+	window.scrollBy(0,-100);  //第一个是left值，第二个是top值
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+
+
+HTML5：新标签、新属性----------------------------------------
+html5新标签：
+	有用的标签(功能性标签)： video audio canvas
+	功能性语义化标签：header footer nav section
+    1<header></header>   页眉
+    1<hgroup></hgroup>   标题组合
+    1<nav></nav>         导航
+    1<footer></footer>   页脚
+    1<section></section> 区域
+    1<article></article> 文章
+    1<aside></aside>     侧边栏
+        aside写到article里面，代表相关文章、友情链接、引用文献
+        aside写到section里面article外面AD，推荐
+   1 <figure></figure>   一组图片
+   1 <figcaption></figcaption> 对figure进行说明
+   1 <time></time>       时间
+   1 <datalist></datalist> 数据列表
+	<option></option>
+        需要和输入框配合使用
+   1 <details></details> 描述信息
+        <summary></summary> 
+   1 <dialog></dialog>   对话
+   1 <address></address> 地址
+   1 <mark></mark>       标记
+   1 <progress></progress> 进度条
+   1 <meter></meter>       进度条
+表单新增控件：
+	email   邮件
+	tel     电话
+	number  数字
+	        min max step
+	 date    日期
+	time    时间
+	week    周
+	month   月
+	datetime-local  本地时间
+	color   颜色
+	range   滑块
+	search  搜索
+
+cookie：（本地存储）
+        特点：容量小(4K),有过期时间，会随着请求发送给后台，完全兼容，使用不方便
+localStorage（本地存储：性能高）：
+	特点：容量大(5M),没有过期时间，并不会发送给后台，兼容性还可以(IE6),使用及其方便
+	存：  localStorage.setItem('name', 'value')
+	取：  localStorage.getItem('name')
+	删除：  localStorage.removeItem('name')
+	全部删除：  localStorage.clear()
+sessionStorage： 用法跟localStorage一模一样，过期时间：关闭浏览器
+共同点：不安全、不能跨域、不能跨浏览器
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+CSS3：新样式（新样式兼容性，需要添加前缀）---------------------------------------------------
+浏览器前缀：
+	-webkit-    chrome、safari、opera
+	-moz-       FF
+	-ms-        IE
+	-o-         早期opera
+transform: rotate(45deg);   旋转
+	rotateX()   高度变矮
+	rotateY()   宽度变窄
+	rotateZ()   默认效果
+旋转的基准点：-webkit-transform-origin:10% 10% ;
+transform: translate(x, y)  平移
+	translate(100px, 100px);translateX(100px);translateY(100px);
+transform: scale(x,y)       缩放     不改变盒模型
+	scale(2,3)；scaleX(2)；scaleY(3)；
+transform: skew(x,y)        倾斜     不改变盒模型
+transform：rotate(45deg);   旋转45度
+transform多个值一起写：先写的后生效
+	  transform: scale(2,1) rotate(45deg) translateX(200px);
+	  先右移200px，旋转45deg，X轴放大2倍
+圆角： border-radius: 10px | 10%;
+文字阴影：text-shadow: 100px 10px 0px red;-- x    y  模糊度 颜色
+ 	text-shadow: 4px 4px 3px red,8px 8px 0px blue,12px 12px 0px green;
+块阴影： box-shadow: inset 100px 100px 100px red;--x   y  模糊度 颜色
+	[投影方式] X轴偏移量 Y轴偏移量  阴影模糊半径阴影扩展半径 阴影颜色
+线性渐变：background:-webkit-linear-gradient(top,color1, color2)
+径向渐变(圆形渐变)：background:-webkit-radial-gradient(color1, color2);
+	background: radial-gradient(200px 150px, red 30%, blue 30%);
+	background:-webkit-radial-gradient(color, color2);	
+倒影： -webkit-box-reflect: 方向 距离 渐变;
+	方向：below above, 和渐变配合使用：rgba();
+背景：background
+	多背景： background: url(),url(),url();
+	background-size: cover;
+		把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。
+	background-size: contain;
+		把图像图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域。
+蒙版：特别类似background
+	-webkit-mask: url();
+	 * 跟颜色无关，只要有颜色就可以显示出来，羽化可以生效
+	 蒙版位置：-webkit-mask-position
+真正的3D：transform-style: preserve-3d;(preserve-3d不能继承)
+	 transform: translateZ();
+	一定要给他的父级添加preserve-3d
+立方体是6个面	 
+
+3维空间---------------------------------------------------------------------
+网页：2维空间
+3维空间： 透视(景深)：观察物体的远近程度 perspective(800px)
+官网作品展示： 至少需要5张图片
+	右：
+	var arr=['l2', 'l1', 'cur', 'r1', 'r2', '', '', ''];
+	var arr=['l1', 'cur', 'r1', 'r2', '', '', '', 'l2'];
+	arr.push(arr.shift());
+	左：
+	var arr=['l2', 'l1', 'cur', 'r1', 'r2', '', '', ''];
+	var arr=['','l2', 'l1', 'cur', 'r1', 'r2', '', ''];
+	arr.unshift(arr.pop());
+ perspective：
+        a). 加给变化物体,transform: perspective(800px);
+        b). 加给父级,perspective: 800px;
+--------------------------------------------------------------------------
+翻面： 2个面
+	 点击旋转Y180deg
+	a). translateZ(), 瑕疵：有条缝
+   	b). backface-visibility: hidden; 背面不可见
+--------------------------------------------------------------------------
+3D颗粒翻转：
+	transition: 1s all ease;
+	transition-duration: 1s;    时间
+	transition-property: all;   属性
+	transition-timing-function: ease; 运动形式
+	transition-delay: 1s;       延迟
+--------------------------------------------------------------------------
+爆炸效果：
+    哪些值动：
+	opacity
+	scale
+	rotate
+--------------------------------------------------------------------------
+地理信息：navigator.geolocation  IE9+
+        .getCurrentPosition(fnSucc, fnFail)   获取当前的地理位置
+ fnSucc:
+        ev.coords.longitude  经度116.365487
+        ev.coords.latitude   纬度40.099615
+        ev.coords.accuracy   精确度
+            低于60基本不可用
+        ev.coords.altitude   海拔
+        ev.coords.altitudeAccuracy  海拔精确度
+        ev.coords.heading    朝向
+        ev.coords.speed      速度
+fnFail:
+        ev.code     状态码
+            0   未知错误
+            1   用户拒绝
+            2   googleapi
+            3   网络超时
+        ev.message  失败描述
+ Chrome：获取失败 FF：获取失败  IE：获取成功
+	实时获取：
+		a). 开个定时器
+		b). watchPosition(fnSucc, fnFail, options)
+	watchPosition(fnSucc, fnFail, {frequency: 3000})
+	        frequency：频率
+	clearWatch();   关闭监听
+百度地图--------------------------------------------------------------------
+百度地图：
+
+http://map.baidu.com/ -> 地图开放平台 -> web 开发
+
+DEMO：http://developer.baidu.com/map/jsdemo.htm#a1_2
+
+1、引入百度地图
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=您的密钥"></script>
+
+    秘钥：申请
+2、生成地图
+    var map = new BMap.Map("box");
+3、初始化地图(设置中心点)
+    var oPoint=new BMap.Point(116.365487, 40.099615);
+    map.centerAndZoom(oPoint, 15);
+4、添加标注
+    var marker = new BMap.Marker(oPoint);
+    map.addOverlay(marker);
+
+    其他：
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+webWorker----------------------------------------------------------------
+webWorker：
+    主线程：DOM渲染，渲染，绘制
+    子线程：复杂操作(计算)
+    a.js：子线程
+        var oW=new Worker('a.js');
+    通信：
+        主线程发送给子线程
+            oW.postMessage(123);
+        子线程接收消息
+            this.onmessage=function(ev){
+                console.log(ev.data);
+            };
+    发送消息：
+        obj.postMessage(data);
+    接收消息：
+        obj.onmessage=function(ev){
+            // ev.data
+        }
+    注意：
+        a). 各自有各自的作用域
+        b). 在子线程里面不能再创建子线程
+        c). 在子线程里面不能使用DOM、BOM
+    关闭子线程：
+        oW.terminate();
+webSQL：前端数据库------------------------------------------------------
+webSQL：前端数据库  
+    大小：5M
+    安全：真的不安全
+1、打开一个数据库
+    var db=openDatebase(数据库名称, 数据库版本, 数据库描述, 数据库容量);
+2、开启事务
+    事务：原子性
+        要么成功，要么失败
+    db.transaction(function(tx){
+        // 接下来所有操作
+    });
+3、创建表
+    tx.executeSql('CREATE table new(title TEXT, href TEXT)');
+4、添加数据
+    tx.executeSql('INSERT INTO new VALUES("李克强:推动互联网与制造业融合","http://www.zhinengshe.com")');
+5、查找数据
+    tx.executeSql('SELECT * FROM news', [], function(tx, result){
+        // result -> 数据
+    }, function(tx, err){
+       alert(err);
+    });
+重力感应--------------------------------------------------------------------
+重力感应：
+    window.DeviceMotionEvent
+    var acc=ev.accelerationIncludingGravity;
+    acc.x
+    acc.y
+    acc.z
+    window.addEventListener('devicemotion', function(ev){
+        var acc=ev.accelerationIncludingGravity;
+        oDiv.innerHTML=acc.x;
+    }, false);
+    oDiv.addEventListener('webkitAnimationEnd', function(){
+        oDiv.classList.remove('rotate');
+    }, false);
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+运动----------------------------------------------------------------
+基本动画：
+	transition: 1s all ease;
+	transition: 1s width ease,.5s height ease;
+	1s -> 时间  s  ms
+	all -> 哪些属性动
+	ease -> 运动形式
+		linear
+		ease
+		ease-in
+		ease-out
+		ease-in-out
+		cubic-bezier(0.11,-0.76, 0.51, 1.51)
+高级动画：
+        a). 定义动画
+            @keyframes move{
+                from{width:200px;}
+                to{width:500px;}
+            }
+        b). 执行动画
+            animation: 1s 动画名称 ease;
+animate.css：
+	官网：http://daneden.github.io/animate.css/
+高级运动深入：
+	animation: 3s test ease 次数;
+		次数：infinite是无限运动
+ animation: 1s test ease 3 alternate 2s;
+animation-name: test;           动画名称
+	animation-duration: 1s;         动画时间
+	animation-timing-function: ease;运动形式
+	animation-iteration-count: 3; 运动次数
+	animation-fill-mode: forwards;  定到远端
+	animation-play-state: paused;   暂停
+	animation-direction: alternate; 交替运动
+	animation-delay: 2s;            延迟
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
