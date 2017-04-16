@@ -1,0 +1,194 @@
+bower-> （前端）包管理器
+	npm install bower -g
+		验证: bower --version
+用git进入文件要下载的位置，然后开始下载
+bower install <包名>下载
+bower install <包名> #版本号  根据版本号下载
+bower uninstall <包名>删除
+bower info <包名>	查看包版本信息
+
+<script src="bower_components/vue/dist/vue.js"></script>
+
+npm：--------------------------------------------------------------------------
+
+webpack：
+
+----------------------------------------------------------------------------------	
+安装模块:
+	 安装模块：npm install 模块名
+	 按版本安装模块：npm install 模块名@版本号
+     	 卸载模块： npm uninstall 模块名
+ 	 卸载全局模块： npm uninstall -g 模块名
+	 更新本地模块： npm update 模块名
+	npm install： NPM就会分析依赖关系以及你本地的node_modules目录，并自动的下载和安装缺失的模块
+	npm update：事实上，你仅用update方法就行了，因为它会让NPM自动获取那些缺失的依赖模块。
+npm常用命令：
+	npm list：查看当前目录下已安装的node包
+	npm view moduleNames：查看node模块的package.json文件夹
+	npm help：查看帮助命令
+	npm view moudleName dependencies：查看包的依赖关系
+	npm view moduleName repository.url：查看包的源文件地址
+	npm view moduleName engines：查看包所依赖的Node的版本
+	npm help folders：查看npm使用的所有文件夹
+	npm rebuild moduleName：用于更改包内容后进行重建
+	npm outdated：检查包是否已经过时，此命令会列出所有已经过时的包，可以及时进行包的更新
+	npm update moduleName：更新node模块
+	npm uninstall moudleName：卸载node模块
+	一个npm包是包含了package.json的文件夹，package.json描述了这个文件夹的结构。访问npm的json文件夹的方法如下：
+		$ npm help json 
+		此命令会以默认的方式打开一个网页，如果更改了默认打开程序则可能不会以网页的形式打开。
+	发布一个npm包的时候，需要检验某个包名是否已存在：npm search packageName
+	npm init：会引导你创建一个package.json文件，包括名称、版本、作者这些信息等
+	npm root：查看当前包的安装路径
+	npm root -g：查看全局的包的安装路径
+	npm -v：查看npm安装的版本
+	
+	cnpm install css-loader style-loader：安装css-loader和style-loader
+# 安装
+	cnpm install webpack-dev-server -g
+# 运行
+	webpack-dev-server --progress --colors
+
+
+
+
+
+
+**npm install <name> --save 
+	安装的同时，将信息写入package.json中项目路径中如果有 package.json文件时，
+直接使用npm install方法就可以根据dependencies配置安装所有的依赖包，这样代码提交到github时，
+就不用提交node_modules这个文 件夹了。
+
+
+
+package.json是一个JSON格式的文件，包含了一系列属性，但是如果仅仅是为了
+说明程序的依赖关系，则只用一个 dependencies属性就行。比如，一个叫MyApp
+的应用程序依赖sax,nano和request模块，只需要建立这样一个 package.json：
+
+复制代码 代码如下:
+
+
+     {
+
+                 "name" : "MyApp",
+
+                 "version" : "1.0.0",
+
+                 "dependencies" : {
+
+                                  "sax" : "0.3.x",
+
+                                  "nano" : "*",
+
+                                  "request" : ">0.2.0"
+
+                 }
+
+     }
+package.json介绍
+
+name
+~ 在package.json中最重要的就是name和version字段。他们都是必须的，如果没有就无法install；
+~ 想好名字之前先去npm registry查看一下这个名字是否已经被使用了，http://registry.npmjs.org/
+
+version
+~ version必须能被 node-semver解析，它被包在npm的依赖中；
+~ name和version一起组成的标识在假设中是唯一的。改变包应该同时改变version
+
+private
+~ 如果你设置"private": true，npm就不会发布它；
+~ 这是一个防止意外发布私有库的方式。如果你要确定给定的包是只发布在特定registry（如内部registry）的，用publishConfighash的描述来重写registry的publish-time配置参数
+
+scripts
+~ “scripts”是一个由脚本命令组成的hash对象，他们在包不同的生命周期中被执行。key是生命周期事件，value是要运行的命令。
+
+dependencies
+~ 依赖是给一组包名指定版本范围的一个hash。这个版本范围是一个由一个或多个空格分隔的字符串。依赖还可以用tarball或者git URL
+----------------------------------------------------------------------------------	
+npm指令：
+node --version 查看node.js版本号
+npm --version 查看npm版本号
+node有一个模块叫n，是专门用来管理node.js的版本的。
+        首先安装n模块：npm install -g n   
+
+npm -v          #显示版本，检查npm 是否正确安装。 
+npm install express   #安装express模块 
+npm install -g express  #全局安装express模块 
+npm list         #列出已安装模块 
+npm show express     #显示模块详情 
+npm update        #升级当前目录下的项目的所有模块 
+npm update express    #升级当前目录下的项目的指定模块 
+npm update -g express  #升级全局安装的express模块 
+npm uninstall express  #删除指定的模块
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
