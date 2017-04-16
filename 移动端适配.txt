@@ -1,0 +1,32 @@
+
+html基本字号适配：
+<script type="text/javascript">  	
+	;(function(win,doc){
+		function change(){
+			doc.documentElement.style.fontSize=20*doc.documentElement.clientWidth/360+'px';
+		}
+		change();
+		win.addEventListener('resize',change,false);
+	})(window,document);
+</script>
+移动端必须要添加的meta标签：
+<meta name="viewport" content="
+	width=device-width,
+	initial-scale=1,
+	minimum-scale=1,
+	maximum-scale=1,
+	user-scalable=no" />
+
+根据不同屏幕用不同的样式：
+<style>
+	@media only screen and (max-width: 360px){ /*如果小于360px 就不再按比例缩小 */
+		html{font-size:12px;}
+		body{width:30rem;}	
+		footer ul{width:30rem;}
+	} 
+	@media only screen and (min-width: 960px){ /*如果大于960px 就不再按比例放大 */
+		html{font-size:32px;}
+		body{width:30rem;margin:0 auto;}	
+		footer ul{width:30rem;}
+	} 
+<style/>
